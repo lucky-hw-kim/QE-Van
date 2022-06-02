@@ -2,11 +2,19 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-
+  margin-left: -3.5rem;
 }
 
 input {
   outline: none;
   border: none;
   background-color: var(--white);
+  width: 55%;
+  height: 2rem;
+}
+
+button {
+  border: none;
+  background-color: var(--red);
+  width: 8%;
 }
