@@ -7,8 +7,12 @@ import SearchBar from './SearchBar/SearchBar'
 const Center = () => {
   return (
     <div className={styles.CenterContainer}>
-      <SearchBar />
-      <EventList />
+      <div className={styles.pinkbox}/>
+      <div className={styles.SearchBar}>
+        <SearchBar  />
+        <EventList />
+      </div>
+      <div className={styles.greenbox}/>
     </div>
   )
 }

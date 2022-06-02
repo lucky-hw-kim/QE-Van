@@ -4,9 +4,9 @@ import styles from './NavBar.module.css'
 const NavBar = () => {
   return (
     <div className={styles.NavBarContainer}>
-      <div>CREATE</div>
-      <div>SAVED</div>
-      <div>ATTENDING</div>
+      <button>CREATE</button>
+      <button>SAVED</button>
+      <button>ATTENDING</button>
       <div className={styles.Logout}>LOGOUT</div>
     </div>
   )

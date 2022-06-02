@@ -3,4 +3,30 @@
     width: 100%;
     background-color: var(--blue);
     color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.pinkbox {
+    position: fixed;
+    width: 20%;
+    height: 30%;
+    margin-right: 20px;
+    background-color: var(--pink);
+    align-self: flex-end;
+    z-index: 1;
+}
+
+.SearchBar{
+    position: relative;
+    margin-top: 5px;
+    z-index: 2;
+}
+
+.greenbox {
+    bottom:0;
+    position: fixed;
+    width: 20%;
+    height: 17%;
+    background-color: var(--red);
 }
