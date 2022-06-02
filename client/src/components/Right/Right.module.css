@@ -1,0 +1,6 @@
+.RightContainer {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--green);
+  color: var(--white);
+}
