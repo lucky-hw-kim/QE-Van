@@ -1,0 +1,12 @@
+.SearchBarContainer > form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: var(--white);
+}

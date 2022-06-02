@@ -4,3 +4,12 @@
   background-color: var(--pink);
   color: var(--white);
 }
+
+.Logo {
+  margin: 0.7rem 0 1rem 0;
+  font-family: 'Monoton', cursive;
+  font-weight: 100;
+  text-align: center;
+  color: var(--black);
+  font-size: 2.6rem;
+}
