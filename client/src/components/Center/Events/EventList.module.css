@@ -1,9 +1,10 @@
 .EventListContainer {
   margin-left: 7%;
-  max-height: 86vh;
-  margin-top: 5px;
+  max-height: 85vh;
+  margin-top: 15px;
   overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 75vh;
 }

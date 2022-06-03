@@ -19,7 +19,7 @@ const Event = ({event, id}) => {
         <img src={event.event_thumbnail} alt="eventimg" />
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.date}>{event.event_date}</div>
+        <div className={styles.date}>{event.event_date.toUpperCase()} PST</div>
         <div className={styles.name}>{event.event_name}</div>
         <div className={styles.location}>@ {event.event_location}</div>
         <div className={styles.buttonContainer}>

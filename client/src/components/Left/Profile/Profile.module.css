@@ -16,6 +16,11 @@
   z-index: 5;
 }
 
+.imageFrame > img {
+  width:150px;
+  height:150px;
+}
+
 .textFrame {
   margin-top: -40px;
   width: 100%;

@@ -31,3 +31,13 @@ abbr {
   font-size: 0.73rem; 
   margin: 5px;
 }
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  opacity: 0.4;
+}
+
+.react-calendar__tile--range {
+  color: var(--blue);
+  text-shadow: 1.5px 1.5px var(--pink);
+
+}

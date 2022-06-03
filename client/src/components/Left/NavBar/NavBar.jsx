@@ -7,7 +7,7 @@ const NavBar = () => {
       <button>CREATE</button>
       <button>SAVED</button>
       <button>ATTENDING</button>
-      <div className={styles.Logout}>LOGOUT</div>
+      <button className={styles.Logout}>LOGOUT</button>
     </div>
   )
 }
