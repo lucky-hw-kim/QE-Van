@@ -1,0 +1,33 @@
+.DatePickerContainer {
+  /* width: 16%;
+  margin-top: 5%;
+  */
+  display: flex;
+  justify-content: center;
+  color: var(--black);
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+
+.react-calendar {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  max-width: 88%;
+  font-size: 0.8rem; 
+  text-align: center;
+  border: 3px solid var(--black);
+  /* background-color: var(--white);*/
+  box-shadow: 9px 9px var(--black); 
+}
+
+div.react-calendar__navigation {
+  margin: 1.3em 1.3em 1em 1em; 
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 0.15rem;
+}
+
+abbr {
+  font-size: 0.73rem; 
+  margin: 5px;
+}
