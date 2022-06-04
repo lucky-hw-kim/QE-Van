@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Calendar, { CalendarProps, CalendarTileProperties, Detail, ViewCallbackProperties } from 'react-calendar'
+import Calendar from 'react-calendar'
 import { DateContext } from '../../Pages/Home/Home'
 // import 'react-calendar/dist/Calendar.css';
 import './DatePickr.css'

@@ -1,12 +1,17 @@
 import React from 'react'
 import styles from './SearchBar.module.css'
+import reset from '../../../assets/resetIcon.png'
 
-const SearchBar = () => {
+const SearchBar = ({search, setSearch}) => {
   return (
     <div className={styles.SearchBarContainer}>
       <form>
-        <input type="search" name="search" />
-        <button type='submit' className={styles.searchButton }></button>
+        <input type="search" name="search" onChange={e => {
+         setSearch(e.target.value)
+        }}/>
+        <button type='submit' className={styles.searchButton }>
+          <img src={reset}alt="reset" width="24px"/>
+        </button>
       </form>    
     </div>
   )

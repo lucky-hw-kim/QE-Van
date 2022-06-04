@@ -10,11 +10,11 @@ const ForumList = () => {
         I Spotted You
       </header>
       <div className="hrline"></div>
-      <body className='ForumList_body'>
+      <div className='ForumList_body'>
         {ForumData.map((post, id)=>{
           return <Forum post={post} key={id}/>
         })}
-      </body>
+      </div>
       <button>>></button>
     </div>
   )
