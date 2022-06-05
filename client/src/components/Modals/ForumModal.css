@@ -1,0 +1,142 @@
+.containerBody {
+  width: 34vw;
+  height: 70vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--peach);
+  z-index: 1000;
+  padding: 3% 3% 0 3%;
+  font-size: 0.65rem;
+  box-shadow: 9px 9px var(--black);
+  display: flex;
+  justify-content: center;
+  color: var(--black);
+}
+
+.ForumModalContainer {
+  height: 77%;
+  width: 88%;
+  border: 3px solid var(--black);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  
+}
+
+.title {
+  font-size: 0.9rem;
+  color: var(--black);
+  text-shadow: 3px 3px var(--pink);
+}
+
+.description {
+
+  line-height: 1.1rem;
+
+}
+.date {
+  margin-top: 0.7rem;
+}
+
+.link:link {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.closeButtonOne {
+  font-size: 1.3rem;
+  margin: -12% -7% 1% 0; 
+  color: var(--black);
+  align-self: flex-end;
+}
+.closeButtonTwo {
+  font-size: 1.3rem;
+  margin: -7% -7% 1% 0; 
+  color: var(--black);
+  position: absolute;
+  right: 65px;
+  top: 75px;
+
+}
+
+.btn {
+	border-bottom: 4px inset rgba(0,0,0,.5);
+	border-left: 4px inset rgba(0,0,0,.5);
+	border-right: 4px inset rgba(255,255,255,.5);
+	border-top: 4px inset rgba(255,255,255,.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	margin: 0.5rem;
+	min-width: 100px;
+	padding: .5rem;
+	text-transform: uppercase;
+	width: auto;
+  margin-bottom: -20px;
+}
+
+.deleteButton {
+  background-color: var(--red);
+}
+
+.editButton {
+  background-color: var(--blue);
+}
+
+.editForm {
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap:8px;
+}
+
+.editForm > input {
+  border: 3px solid var(--black);
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 0.5rem;
+  width: 26vw;
+  height: 30px;
+  align-self: center;
+  margin-bottom: 0.4rem;
+  padding: 0px 10px;
+}
+
+
+
+.editForm > textarea[name="post_description"] {
+  border: 3px solid var(--black);
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 0.5rem;
+  width: 26vw;
+  height: 30px;
+  align-self: center;
+  margin-bottom: 0.4rem;
+  padding: 5px 16px;
+  height: 60px;
+  max-width: 100%;
+  overflow-x: auto;
+  line-height: 1rem;
+  resize:none;
+  overflow: auto;
+  outline: none;
+}
+
+.editForm > .saveButton {
+  align-self: center;
+  border: 3px solid var(--black);
+  width: 100%;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.editForm > .saveButton:hover {
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.05, 1.05);
+}

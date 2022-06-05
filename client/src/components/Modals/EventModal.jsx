@@ -1,21 +1,10 @@
 import React, {useContext} from 'react'
 import { EventContext } from '../../App'
-import { DateContext } from '../Pages/Home/Home'
-
-const EventModal = () => {
+import ReactDom from 'react-dom';
+import './EventModal.css'
+const EventModal = ({event}) => {
 
   const {setEventModal, eventModal} = useContext(EventContext)
-  const {eventDataset, setEventDataset} = useContext(DateContext);
-
-  const MODAL_STYLES = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#FFF',
-    zIndex: 1000,
-    padding: '50px'
-  }
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -23,20 +12,41 @@ const EventModal = () => {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(100, 100, 120, 0.5)',
+    backgroundColor: 'rgba(100, 100, 120, 0.7)',
     zIndex: 9999,
     width: '100vw',
     height: '100vh',
-
   }
 
-  return (
+  return ReactDom.createPortal(
 
     <div style={OVERLAY_STYLES}>
-      <div style={MODAL_STYLES} onClick={() => setEventModal(false)}
-        className="EventModalContainer">
-      I m Modal  </div>
-    </div>
+
+      <div className="EventModalContainer">
+          <button className='closeButton' onClick={() => setEventModal(false)}>X</button>
+        <img src={event.event_thumbnail} alt="thumbnail" className="event_img" />
+        <div className="event_info">
+          <div className="title">
+          {event.event_name}
+          </div>
+          <div className="description">
+          {event.event_description}
+          </div>
+          <div className="date">
+          Date: {event.event_date}
+          </div>
+          <div className="location">
+          Location: @ {event.event_location}
+          </div>
+          <a className="link" href={event.event_link}>
+            <button>
+               EVENT LINK
+          </button>
+          </a>
+        </div>
+      </div>
+    </div>,
+    document.getElementById('portal')
   )
 
 }

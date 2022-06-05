@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 35px;
 }
 
 .NavBarContainer > button {
@@ -14,7 +14,7 @@
 }
 
 div > .Logout {
-  margin-top: 0.7rem;
+  margin-top: 0.2rem;
   color: var(--black);
 }
 

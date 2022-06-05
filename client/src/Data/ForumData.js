@@ -7,7 +7,8 @@ export const ForumData =
     "title": "Red hair with blue shirt!",
     "post_body": "I saw you at the eastside studio and we said hi to each other. I have black hair and you have red hair",
     "spotted_date": "TUE,JUN 4 2:00PM PST",
-    "spotted_event": "eastside studio"
+    "spotted_event": "eastside studio",
+    "email": "john@example.com",
   },
   {
     "post_id": "2",
@@ -16,7 +17,8 @@ export const ForumData =
     "title": "Blue hair with red shirt!",
     "post_body": "I saw you at the westside studio and we said hi to each other. You were dancing",
     "spotted_date": "TUE,MAY 4 2:00PM PST",
-    "spotted_event": "westside studio"
+    "spotted_event": "westside studio",
+    "cemail": "Mary@example.com"
   },
   {
     "post_id": "3",
@@ -25,6 +27,7 @@ export const ForumData =
     "title": "You had a dragon tattoo on your face",
     "post_body": "I saw you at the southside studio and we said hi to each other. You were singing",
     "spotted_date": "TUE,JUN 4 2:00PM PST",
-    "spotted_event": "southside studio"
+    "spotted_event": "southside studio",
+    "email": "jane@example.com",
   }
 ]

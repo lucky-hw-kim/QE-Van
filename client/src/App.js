@@ -7,9 +7,10 @@ export const EventContext = createContext()
 
 function App() {
   const [eventModal, setEventModal] = useState(false);
+  const [forumModal, setForumModal] = useState(false);
   return (
     <div className="App">
-       <EventContext.Provider value={{eventModal, setEventModal}} >
+       <EventContext.Provider value={{eventModal, setEventModal, forumModal, setForumModal}} >
       <Routes>
         {/* <Route path="/" element={<Layout />}>
         </Route> */}

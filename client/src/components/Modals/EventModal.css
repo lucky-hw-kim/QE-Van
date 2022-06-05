@@ -1,4 +1,63 @@
 .EventModalContainer {
-  width: 60vw;
-  height: 50vh;
+  width: 36vw;
+  height: 75vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--peach);
+  z-index: 1000;
+  padding: 3% 4% 4.5% 4%;
+  font-size: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 9px 9px var(--black);
+
 }
+.title {
+  font-size: 0.9rem;
+  color: var(--black);
+  text-shadow: 3px 3px var(--pink);
+}
+
+.event_img {
+  width: 34vw;
+  border: 4px solid var(--red);
+  box-shadow: 9px 9px var(--black);
+}
+
+.description {
+
+  line-height: 1.1rem;
+
+}
+.date {
+  margin-top: 0.7rem;
+}
+
+.event_info {
+  border: 3px solid var(--blue);
+  width: 36vw;
+  text-align: center;
+  margin-top: 1.2rem;
+  line-height: 2rem;
+  box-shadow: 9px 9px var(--black);
+
+}
+
+.event_info > a:link {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.closeButton {
+  font-size: 1.3rem;
+  align-self: flex-end;
+  margin: -2% -7% 1% 0; 
+}
+
+
+
+
