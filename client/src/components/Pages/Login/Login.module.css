@@ -1,0 +1,86 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  text-align: center;
+  background-color: white;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+
+.welcome_container {
+  font-size: 2rem;
+  line-height: 160px;
+  margin: 2em 1.5em 2.6em 1em;
+  color: rgb(192, 169, 255);
+  text-shadow: 5px 5px rgb(254, 241, 194);
+  letter-spacing: 6px;
+
+}
+
+.main_body {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5em;
+  max-height: 100vh;
+}
+
+.login {
+  color: rgb(192, 169, 255);
+  margin-bottom: 0.7em;
+  font-size: 1.6em;
+  font-weight: 600;
+  align-self: center;
+}
+
+.inputField {
+  width: 265px;
+  height: 33px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(137, 100, 217, 0.204);
+  background-color: rgba(145, 119, 223, 0.154);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.7em;
+  margin-top: -2.8em;
+  outline: none !important;
+}
+
+.inputField::placeholder {
+  color: rgb(166, 159, 182);
+}
+
+.btn {
+  text-align: center;
+  width: 265px;
+  background-color: rgb(192, 169, 255);
+  padding: 0.5em 0;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  margin-top: 0.7em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: rgb(192, 169, 255);
+  background: white;
+  border: 1px solid rgb(192, 169, 255);
+}
+
+.newUser {
+  display: flex;
+  font-style: italic;
+  color: rgb(157, 157, 157);
+  gap: 1em;
+  font-size: 0.85em;
+}
+
+.newUser a {
+  color: rgb(157, 157, 157);
+}

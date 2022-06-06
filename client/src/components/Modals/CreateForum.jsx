@@ -35,9 +35,11 @@ const CreateForum = ({setCreatePost, createPost}) => {
 
         <label for="forumDescription">Description:</label>
         <textarea className={styles.body} name="forumDescription"/>
-
-        <label for=""></label>
-        <input className={styles.body} name="forumDate"/>
+        <label for="">Location:</label>
+        <input className={styles.body} name="forumLocation"/>
+        <label for="">Date You Spotted: </label>
+        <input type="date" name="forumDate" />
+        <button className={styles.saveButton}>Save</button>
 
       </div>
       </div>

@@ -1,6 +1,6 @@
 .CreateForumContainer {
   width: 36vw;
-  height: 75vh;
+  height: 70vh;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -12,6 +12,7 @@
   box-shadow: 9px 9px var(--black);
   display: flex;
   justify-content: center;
+  line-height: 1.6rem;
 }
 
 .sub_eventModalContainer{
@@ -55,6 +56,7 @@
   background-color: transparent;
   width: 84%;
   height: 2rem;
+  margin-bottom: 1rem;
 }
 
 .sub_eventModalContainer > label {
@@ -65,5 +67,12 @@
   outline: none;
   border: 3px solid var(--black);
   background-color: transparent;
-  width: 84%
+  width: 84%;
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+.saveButton {
+  margin-top: 1rem;
+  border: 3px solid var(--black);
+  width: 86%;
 }

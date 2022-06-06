@@ -25,11 +25,11 @@ const EventModal = ({event}) => {
       <div className="EventModalContainer">
           <button className='closeButton' onClick={() => setEventModal(false)}>X</button>
           <div className='sub_eventModalContainer'>
-        <img src={event.event_thumbnail} alt="thumbnail" className="event_img" />
-        <div className="event_info">
           <div className="title">
           {event.event_name}
           </div>
+        <img src={event.event_thumbnail} alt="thumbnail" className="event_img" />
+        <div className="event_info">
           <div className="description">
           {event.event_description}
           </div>
@@ -40,9 +40,9 @@ const EventModal = ({event}) => {
           Location: @ {event.event_location}
           </div>
           <a className="link" href={event.event_link}>
-            <button>
+            <button id="eventLink">
                EVENT LINK
-          </button>
+            </button>
           </a>
         </div>
       </div>

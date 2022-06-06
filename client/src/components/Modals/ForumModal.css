@@ -42,11 +42,6 @@
   margin-top: 0.7rem;
 }
 
-.link:link {
-  text-decoration: none;
-  color: var(--black);
-  text-align: center;
-}
 
 .closeButtonTwo {
   font-size: 1.3rem;
