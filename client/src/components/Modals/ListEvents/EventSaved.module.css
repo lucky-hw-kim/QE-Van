@@ -1,0 +1,28 @@
+.eventSavedContainer {
+  width: 90%;
+  max-height: 30%;
+  border: 3px solid var(--black);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 0.5rem;
+  line-height: 1.1rem;
+  align-self: center;
+  margin-left: 0.7rem;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--black);
+
+}
+
+a > button {
+  padding: 0;
+  margin: 0;
+}
+
+a > button:hover {
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.06, 1.06);
+}
+

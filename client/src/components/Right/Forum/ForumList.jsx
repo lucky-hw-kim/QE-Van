@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import { EventContext } from '../../../App'
 import { ForumData } from '../../../Data/ForumData'
+import CreateForum from '../../Modals/CreateForum'
 import ForumModal from '../../Modals/ForumModal'
 import Forum from './Forum'
 import './ForumList.css'
@@ -10,6 +11,7 @@ const ForumList = () => {
 
   const [forumPost, setForumPost] = useState("")
   const [editPost, setEditPost] = useState(false)
+  const [createPost, setCreatePost] = useState(false)
 
   const {forumModal, setForumModal} = useContext(EventContext);
 
@@ -19,6 +21,10 @@ const ForumList = () => {
 
   const handleEditPost = () => {
     setEditPost(!editPost);
+  }
+
+  const handleCreatePost = () => {
+    setCreatePost(!createPost);
   }
 
   return (
@@ -33,8 +39,14 @@ const ForumList = () => {
             return <Forum setForumPost={setForumPost} post={post} key={id}/>
           })}
         </div>
+        <button className='forumListBtn' onClick={handleCreatePost}>
+          LOOKING FOR SOMEONE?
+        </button>
       </div>
       {forumModal ? <ForumModal handleDeletePost={handleDeletePost} handleEditPost={handleEditPost} post={forumPost} editPost={editPost}/> : "" }
+      {
+        createPost ? <CreateForum setCreatePost={setCreatePost} createPost={createPost}/> : ""
+      }
     </>
   )
 }

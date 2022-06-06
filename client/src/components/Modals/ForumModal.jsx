@@ -29,11 +29,11 @@ const ForumModal = ({post, handleDeletePost, handleEditPost, editPost }) => {
         <button className='closeButtonTwo' onClick={() => setForumModal(false)}>X</button>
           <form className="editForm">
             <label for="post_title" >
-            Title
+            Title:
             </label>
             <input type="text" value={postValue.title} name="post_title" onChange={(e)=>{setPostValue(e.target.value)}}/>
             <label for="post_description"  >
-            Description
+            Description:
             </label>
             <textarea name="post_description"  value={postValue.post_body} onChange={(e)=>{setPostValue(e.target.value)}}/>
             <label for="post_location" >
@@ -52,6 +52,7 @@ const ForumModal = ({post, handleDeletePost, handleEditPost, editPost }) => {
         </div> : 
         <>
             <button className='closeButtonOne' onClick={() => setForumModal(false)}>X</button>
+            <div className="eventModalBody">
             <div className="title">
             {post.title}
             </div>
@@ -59,26 +60,22 @@ const ForumModal = ({post, handleDeletePost, handleEditPost, editPost }) => {
             {post.post_body}
             </div>
             <div className="location">
-            Location: @ {post.spotted_event}
+            WHERE: @ {post.spotted_event}
             </div>
-            <div className="spotted_date">
-            Spotted Date: {post.spotted_date}
-            </div>
-            <div className="post_date">
-            Date Created: {post.post_date}
+            <div className="date" >
+             WHEN:{post.spotted_date}
             </div>
             <div className="user_name">
             By {post.user_name}
             </div>
-            <a className="link" href={post.email}>
-              <button>
-                EMAIL {post.user_name}
-              </button>
-            </a>
+
+            <div>
             <span>
               <button onClick={handleDeletePost} type="button" class="deleteButton btn">Delete</button>
               <button onClick={handleEditPost} type="button" class="editButton btn">Edit</button>
             </span>
+            </div>
+            </div>
           </>
         }
       </div>

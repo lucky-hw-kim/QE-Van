@@ -24,6 +24,7 @@ const EventModal = ({event}) => {
 
       <div className="EventModalContainer">
           <button className='closeButton' onClick={() => setEventModal(false)}>X</button>
+          <div className='sub_eventModalContainer'>
         <img src={event.event_thumbnail} alt="thumbnail" className="event_img" />
         <div className="event_info">
           <div className="title">
@@ -44,6 +45,7 @@ const EventModal = ({event}) => {
           </button>
           </a>
         </div>
+      </div>
       </div>
     </div>,
     document.getElementById('portal')

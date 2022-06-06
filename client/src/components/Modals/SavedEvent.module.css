@@ -1,0 +1,89 @@
+.eventsContainer {
+  width: 36vw;
+  height: 73vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--peach);
+  z-index: 1000;
+  padding: 3% 4% 3% 4%;
+  font-size: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 9px 9px var(--black);
+}
+
+.sub_eventsContainer {
+  height: 90%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  
+}
+.savedEventContainer {
+  width: 85%;
+  position: fixed;
+  top: 8%;
+  border: 3px solid var(--black);
+  padding: 0.5em;
+  max-height: 50%;
+  overflow: auto;
+} 
+
+.attendingEventContainer {
+  position: fixed;
+  top: 55%;
+  width: 85%;
+  border: 3px solid var(--black);
+  padding: 0.5em;
+  max-height: 38%;
+  overflow: auto;
+}
+
+.title {
+  font-size: 0.9rem;
+  color: var(--black);
+  text-shadow: 3px 3px var(--white);
+  background-color: var(--peach);
+  margin-top: -15px;
+  text-align: center;
+  width: fit-content;
+  padding: 0 1rem 0.5rem 1rem;
+  text-indent: none;
+  position: fixed;
+}
+
+
+.description {
+
+  line-height: 1.1rem;
+
+}
+.date {
+  margin-top: 0.7rem;
+}
+
+.event_info {
+  border: 3px solid var(--white);
+  width: 35vw;
+  text-align: center;
+  margin-top: 1.2rem;
+  line-height: 2rem;
+  box-shadow: 9px 9px var(--black);
+}
+
+
+.closeButton {
+  font-size: 1.3rem;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  
+}
+
+

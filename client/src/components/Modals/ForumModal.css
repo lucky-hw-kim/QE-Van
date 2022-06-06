@@ -24,13 +24,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  
+  text-align: left;
 }
 
 .title {
   font-size: 0.9rem;
   color: var(--black);
-  text-shadow: 3px 3px var(--pink);
+  text-shadow: 3px 3px var(--white);
 }
 
 .description {
@@ -45,14 +45,9 @@
 .link:link {
   text-decoration: none;
   color: var(--black);
+  text-align: center;
 }
 
-.closeButtonOne {
-  font-size: 1.3rem;
-  margin: -12% -7% 1% 0; 
-  color: var(--black);
-  align-self: flex-end;
-}
 .closeButtonTwo {
   font-size: 1.3rem;
   margin: -7% -7% 1% 0; 
@@ -60,19 +55,19 @@
   position: absolute;
   right: 65px;
   top: 75px;
-
 }
 
 .btn {
-	border-bottom: 4px inset rgba(0,0,0,.5);
+  border: 3px solid var(--black);
+	/* border-bottom: 4px inset rgba(0,0,0,.5);
 	border-left: 4px inset rgba(0,0,0,.5);
 	border-right: 4px inset rgba(255,255,255,.5);
-	border-top: 4px inset rgba(255,255,255,.5);
+	border-top: 4px inset rgba(255,255,255,.5); */
 	box-sizing: border-box;
-	color: white;
+	color: var(--black);
 	cursor: pointer;
 	display: inline-block;
-	margin: 0.5rem;
+	margin: 0.7rem;
 	min-width: 100px;
 	padding: .5rem;
 	text-transform: uppercase;
@@ -80,13 +75,6 @@
   margin-bottom: -20px;
 }
 
-.deleteButton {
-  background-color: var(--red);
-}
-
-.editButton {
-  background-color: var(--blue);
-}
 
 .editForm {
   color: var(--black);
@@ -139,3 +127,37 @@
   transition: all 0.2s ease-in-out 0s;
   transform: scale(1.05, 1.05);
 }
+.eventModalBody {
+  line-height: 1.2rem;
+}
+
+.eventModalBody > .title {
+  line-height: 1.5rem;
+}
+
+.eventModalBody > div >.spotted_date {
+ margin-bottom: 10px;
+
+}
+
+
+.eventModalBody > div {
+  text-align:  center;
+  margin-bottom: 20px;
+}
+
+.eventModalBody > .link {
+  left:auto;
+  right:auto;
+  text-align:  center;
+}
+
+
+.closeButtonOne {
+  font-size: 1.3rem;
+  right: 40px;
+  top: 40px;
+  color: var(--black);
+  position: absolute;
+}
+

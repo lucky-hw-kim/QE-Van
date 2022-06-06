@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDom from "react-dom";
-import './SavedEvent.css'
+import styles from './SavedEvent.module.css'
+import { EventData } from '../../Data/EventData';
+import {UserData} from '../../Data/UserData';
+import EventSaved from './ListEvents/EventSaved';
 
-const SavedEvent = () => {
+
+const SavedEvent = ({savedEventModal, setSavedEventModal}) => {
   const OVERLAY_STYLES = {
     position: "fixed",
     top: 0,
@@ -17,11 +21,35 @@ const SavedEvent = () => {
 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
-      <div className="savedEventContainer">
-
+      <div className={styles.eventsContainer}>
+      <div className={styles.sub_eventsContainer}>
+      <button className={styles.closeButton} onClick={() => setSavedEventModal(false)}>X</button>
+        <div className={styles.savedEventContainer}>
+         <div className={styles.title}>
+           SAVED EVENTS
+         </div>
+         <div className={styles.eventList}>
+           {EventData.map(e => {
+             if(UserData[0].saved_events.includes(e.id)){
+            return <EventSaved e={e}/>
+             }
+           })}
+          
+         </div>
+        </div>
+        <div className={styles.attendingEventContainer}>
+          <div className={styles.title}>
+            ATTENDING EVENTS
+          </div>
+          <div className={styles.eventList}>
+          {EventData.map(e => {
+             if(UserData[0].attending_events.includes(e.id)){
+            return <EventSaved e={e}/>
+             }
+           })}
+          </div>
+        </div>
       </div>
-      <div className='attendingEventContainer'>
-
       </div>
     </div>,
     document.getElementById("portal")

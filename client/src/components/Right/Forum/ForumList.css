@@ -6,7 +6,7 @@
   color: var(--black);
   box-shadow: 9px 9px var(--black); 
   margin: 5%;
-  max-height: 50%;
+  max-height: 54%;
 }
 
 .ForumList_header {
@@ -25,5 +25,20 @@
   align-self: center;
   font-size: 0.57rem;
   padding: 0.4rem;
+  max-height: 70%;
+  max-width: 95%;
+  overflow: scroll;
 }
 
+.ForumListContainer > .forumListBtn { 
+  align-self: center;
+  width: 94%;
+  border: 3px solid var(--black);
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.ForumListContainer > .forumListBtn:hover{
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.03, 1.03);
+}
