@@ -12,16 +12,38 @@
   box-shadow: 9px 9px var(--black);
   display: flex;
   justify-content: center;
+  
 }
 
 .modalContainer {
   height: 77%;
   width: 88%;
-  border: 3px solid var(--white);
+  border: 3px solid var(--black);
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
-  
+}
+.location-input {
+  display: flex;
+  flex-direction: column;
+}
+.location-search-input {
+  border: 3px solid var(--black);
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 0.5rem;
+  width: 26vw;
+  height: 30px;
+  margin-left: 0.2em;
+  margin-bottom: 0.4rem;
+  align-self: center;
+  padding: 0px 10px;
+}
+.location-search-input::placeholder{
+color: var(--black);
+}
+
+.createpostTitle:focus{
+  background-color: transparent;
 }

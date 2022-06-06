@@ -19,11 +19,13 @@ const Event = ({event, id, addModalEvent}) => {
     }
   }, [])
 
-  const handleSave= () => {
+  const handleSave= (e) => {
+    e.stopPropagation();
     setSaveEvent(!saveEvent)
   }
 
-  const handleAttend= () => {
+  const handleAttend= (e) => {
+    e.stopPropagation();
     setAttendEvent(!attendEvent)
   }
 

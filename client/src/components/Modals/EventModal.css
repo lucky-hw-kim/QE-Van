@@ -19,12 +19,12 @@
 .title {
   font-size: 0.9rem;
   color: var(--black);
-  text-shadow: 3px 3px var(--pink);
+  text-shadow: 3px 3px var(--black);
 }
 
 .event_img {
   width: 34vw;
-  border: 4px solid var(--red);
+  border: 4px solid var(--white);
   box-shadow: 9px 9px var(--black);
 }
 
@@ -38,8 +38,8 @@
 }
 
 .event_info {
-  border: 3px solid var(--blue);
-  width: 36vw;
+  border: 3px solid var(--white);
+  width: 35vw;
   text-align: center;
   margin-top: 1.2rem;
   line-height: 2rem;
