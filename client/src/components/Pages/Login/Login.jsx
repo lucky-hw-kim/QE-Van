@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import classes from './Login.module.css'
 
 const Login = () => {
-  const userRef
 
   const handleChange = () => {
 
