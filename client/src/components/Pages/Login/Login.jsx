@@ -27,7 +27,7 @@ const Login = () => {
             { error && <p>{ error }</p> }
             <button type='submit' className={ classes.btn }>Login</button>
             <div className={ classes.newUser }>
-              <p><NavLink to='/signup'>New user?</NavLink></p>
+              <p><NavLink to='/register'>New user?</NavLink></p>
               <p>Forgot Your Password?</p>
             </div>
           </form>

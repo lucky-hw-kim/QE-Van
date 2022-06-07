@@ -1,0 +1,108 @@
+.registerContainer {
+  background-color: var(--pink);
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+
+section {
+  width: 100%;
+  max-width: 420px;
+  max-height: 500px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border: 3px solid var(--black);
+  align-self: center;
+  box-shadow: 9px 9px var(--black);
+  background-color: var(--peach);
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+.registerForm > input {
+  border: 3px solid var(--black);
+  background-color: transparent;
+  outline: none;
+  font-family: inherit;
+  height: 25px;
+  margin-bottom: 0.5rem;
+}
+
+
+
+.instructions {
+  background: #000;
+  color: #fff;
+  padding: 0.5rem;
+  position: relative;
+  bottom: -5px;
+  font-size: 0.6rem;
+  line-height: 1.3rem;
+}
+
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  /* color: var(--green); */
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  /* color: var(--red); */
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  border: 3px solid var(--red);
+  color: var(--red);
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+
+}
+
+.line {
+  display: inline-block;
+}
+
+.bottomText {
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.signupBtn {
+  border: 3px solid var(--black);
+}
+
+button:disabled:hover,
+button[disabled]{
+  border: 3px solid var(--grey);
+  color: var(--grey);
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.00, 1.00);
+}
+
+
+.signupBtn:hover {
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.03, 1.03);
+}
