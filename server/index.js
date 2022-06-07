@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from './Routes/UserRoute.js'
 import EventRoute from './Routes/EventRoute.js'
+import ForumRoute from './Routes/ForumRoute.js'
 
 // Routes
 const app = express();
@@ -24,3 +25,4 @@ mongoose.connect(process.env.MONGO_DB, {useNewUrlParser: true, useUnifiedTopolog
 app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
 app.use('/event', EventRoute)
+app.use('/forum', ForumRoute)

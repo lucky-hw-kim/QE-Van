@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const EventSchema = mongoose.Schema(
+const ForumSchema = mongoose.Schema(
   {
     userId: {
       type: String, require: true
@@ -12,9 +12,12 @@ const EventSchema = mongoose.Schema(
       type: String, require: true
     },
     spotted_date: {
-      type: String, require: true
+      type: Date, require: true
     },
     spottted_location: {
+      type: String, require: true
+    },
+    user_email: {
       type: String, require: true
     }
   },

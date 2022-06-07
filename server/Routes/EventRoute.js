@@ -10,6 +10,6 @@ router.delete('/:id', deleteEvent)
 router.put('/:id', updateEvent)
 router.put('/:id/save', saveEvent)
 router.put('/:id/attend', attendingEvent)
-router.get('/events', getAllEvents)
+router.get('/', getAllEvents)
 
 export default router;

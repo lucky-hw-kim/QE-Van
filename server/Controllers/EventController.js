@@ -2,6 +2,22 @@ import EventModel from "../Models/eventModel.js"
 import UserModel from "../Models/userModel.js"
 
 
+//Get All events 
+
+export const getAllEvents = async (req, res) => {
+
+  try {
+    const events = await EventModel.find().sort({ event_date : 1 })
+
+    res.status(200).json(events)
+    
+  } catch (error) {
+    res.status(500).json(error)
+  }
+
+}
+
+
 // Create Event
 export const createEvent = async (req, res) => {
   const newEvent = new EventModel(req.body)
@@ -76,11 +92,15 @@ export const saveEvent = async (req, res) => {
 
   try {
     const event = await EventModel.findById(eventId)
+    const user = await UserModel.findById(userId)
+
     if(!event.saved_userId.includes(userId)) {
       await event.updateOne({$push : {saved_userId: userId}})
+      await user.updateOne({$push : {saved_events: eventId}})
       res.status(200).json("Event saved")
     } else {
       await event.updateOne({$pull : {saved_userId: userId}})
+      await user.updateOne({$pull : {saved_events: eventId}})
       res.status(200).json("Event unsaved")
     }
   } catch (err) {
@@ -94,12 +114,17 @@ export const attendingEvent = async (req, res) => {
   const {userId} = req.body
 
   try {
+
     const event = await EventModel.findById(eventId)
+    const user = await UserModel.findById(userId)
+
     if(!event.attending_userId.includes(userId)) {
       await event.updateOne({$push: {attending_userId: userId}})
+      await user.updateOne({$push : {attending_events: eventId}})
       res.status(200).json("Event attending!")
     } else {
       await event.updateOne({$pull: {attending_userId: userId}})
+      await user.updateOne({$pull : {attending_events: eventId}})
       res.status(200).json("Event not attending!")
     }
   } catch (err) {
@@ -107,19 +132,4 @@ export const attendingEvent = async (req, res) => {
   }
 }
 
-//Get All events 
-
-export const getAllEvents = async (req, res) => {
-
-  try {
-    const events = await EventModel.find();
-    res.status(200).json(events).sort((a,b)=>{
-      return b.event_date - a.event_date
-    })
-    
-  } catch (error) {
-    res.status(500).json(error)
-  }
-
-}
 
