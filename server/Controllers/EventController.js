@@ -1,4 +1,5 @@
 import EventModel from "../Models/eventModel.js"
+import UserModel from "../Models/userModel.js"
 
 
 // Create Event
@@ -30,11 +31,17 @@ export const updateEvent = async (req, res) => {
   const {userId} = req.body
 
   try {
-    const event = await EventModel.findById(eventId)
-    if(event.userId === userId) {
 
-      const event = await EventModel.findByIdAndUpdate(eventId, req.body, {new: true});
-      res.status(200).json(event)
+    const user = await UserModel.findById(userId)
+    const event = await EventModel.findById(eventId)
+    // const {userId, ...otherDetails} = event._doc
+
+    if(event.userId === userId || user.isAdmin) {
+
+      await event.updateOne({ $set : req.body });
+      res.status(200).json("Post updated")
+    } else {
+      res.status(500).send("Not Authorized")
     }
   } catch (error) {
     res.status(500).json(error)
@@ -46,10 +53,11 @@ export const deleteEvent = async (req, res) => {
   const eventId = req.params.id
   const {userId} = req.body
 
+  const user = await UserModel.findById(userId)
   const event = await EventModel.findById(eventId)
 
   try {
-    if(userId === event.userId) {
+    if(userId === event.userId || user.isAdmin) {
       await event.deleteOne();
       res.status(200).json("Event deleted successfully")
     } else {
