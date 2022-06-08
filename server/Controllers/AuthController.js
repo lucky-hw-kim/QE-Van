@@ -4,14 +4,21 @@ import bcrypt from 'bcrypt';
 // Register User
 
 export const registerUser = async (req, res) => {
-  const {username, password, firstname, lastname, pronoun} = req.body;
+  const {username, firstname, lastname, password, pronoun} = req.body;
 
-  const salt =await bcrypt.genSalt(10)
-  const hashedPass = await bcrypt.hash(password, salt)
+  // if (!username || !password || !firstname || !lastname) return res.status(400).json({ 'message': 'Username and password are required.' });
 
-  const newUser = new UserModel({username, password: hashedPass, firstname, lastname, pronoun})
 
-  try {
+// check for duplicate usernames in the db
+  const duplicate = await UserModel.findOne({ username: username }).exec();
+    if (duplicate) return res.sendStatus(409); //Conflict 
+
+    
+    try {
+      
+      const hashedPass = await bcrypt.hash(password, 10)
+      const newUser = new UserModel({username, password: hashedPass, firstname, lastname, pronoun})
+
     await newUser.save()
     res.status(200).json(newUser)
   } catch (err) {
@@ -31,7 +38,7 @@ export const loginUser = async (req, res) => {
       validity ? res.status(200).json(user) : res.staus(400).json("Wrong password")
     }
     else {
-      res.status(404).json("User does not exost")
+      res.status(404).json("User does not exist")
     }
   } catch (err) {
     res.status(500).json({message: err.message})

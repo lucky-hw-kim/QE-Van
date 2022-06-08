@@ -5,7 +5,7 @@
   height: 100vh;
 }
 
-section {
+.registerContainer > section {
   width: 100%;
   max-width: 420px;
   max-height: 500px;
@@ -75,8 +75,10 @@ section {
   color: var(--red);
   font-weight: bold;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
-
+  margin-bottom: 1rem;
+  margin-top: 0.2rem;
+  align-self: center;
+  width: 95%;
 }
 
 .line {
@@ -93,8 +95,8 @@ section {
   border: 3px solid var(--black);
 }
 
-button:disabled:hover,
-button[disabled]{
+.signupBtn:disabled:hover,
+.signupBtn[disabled]{
   border: 3px solid var(--grey);
   color: var(--grey);
   transition: all 0.2s ease-in-out 0s;
@@ -105,4 +107,10 @@ button[disabled]{
 .signupBtn:hover {
   transition: all 0.2s ease-in-out 0s;
   transform: scale(1.03, 1.03);
+}
+
+
+#signupHeader {
+  color: var(--black);
+  text-shadow: 3px 3px var(--white);
 }

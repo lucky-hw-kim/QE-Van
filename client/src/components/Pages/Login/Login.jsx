@@ -1,40 +1,105 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from './Login.module.css'
+import axios from '../../api/axios.js'
+import AuthContext, { AuthProvider } from '../../Auth/AuthProvider';
+import './Login.css'
+const LOGIN_URL = 'auth/login';
 
 const Login = () => {
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
 
-  const handleChange = () => {
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
-  }
-  const error = "Error Here"
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
 
-  const bgColor ={
-  backgroundColor: "var(--pink)"
-  }
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
 
-  return (
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-      <div className={ classes.main_body } style={bgColor}>
-        <h1 className={ classes.welcome_container }>Welcome <br /> Back!</h1>
-        <div className={ classes.container } >
-          <form className={ classes.form_container }>
-            <h3 className={ classes.login }>Login</h3>
-            <label htmlFor='email'></label>
-            <input className={ classes.inputField } type='email' name='email' onChange={ handleChange } placeholder="email address"></input>
-            <label htmlFor='password'></label>
-            <input className={ classes.inputField } type='password' placeholder='password' name='password' onChange={ handleChange }></input>
-            { error && <p>{ error }</p> }
-            <button type='submit' className={ classes.btn }>Login</button>
-            <div className={ classes.newUser }>
-              <p><NavLink to='/register'>New user?</NavLink></p>
-              <p>Forgot Your Password?</p>
-            </div>
-          </form>
+        try {
+
+          const username = user;
+          const password = pwd;
+
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ username, password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+        
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ user, pwd, roles, accessToken });
+            setUser('');
+            setPwd('');
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
+    }
+
+    return (
+        <div className='signinContainer'>
+            {success ? (
+                 <NavLink to='/home'></NavLink>
+            ) : (
+                <section>
+                    <h1 id='signinHeader'>Sign In</h1>
+                    <p ref={errRef} className={errMsg ? "errmsg2" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <form className='signinForm' onSubmit={handleSubmit}>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setUser(e.target.value)}
+                            value={user}
+                            required
+                        />
+
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+                        <button className='signinButton'>Sign In</button>
+                    </form>
+                    <p className='bottomText'>
+                        Don't have an Account?<br />
+                        <span className="line">
+                            <NavLink to='/register'>Sign up</NavLink>
+                        </span>
+                    </p>
+                </section>
+            )}
         </div>
-      </div>
+    )
+}
 
-  );
-};
-
-export default Login;
+export default Login

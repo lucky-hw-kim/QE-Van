@@ -1,0 +1,78 @@
+.signinContainer {
+  background-color: var(--pink);
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+
+
+.signinContainer > section {
+  width: 100%;
+  max-width: 420px;
+  max-height: 450px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border: 3px solid var(--black);
+  align-self: center;
+  box-shadow: 9px 9px var(--black);
+  background-color: var(--peach);
+}
+
+.signinForm > input {
+  border: 3px solid var(--black);
+  background-color: transparent;
+  outline: none;
+  font-family: inherit;
+  height: 25px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-self: center;
+}
+
+.signinForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  
+}
+
+
+.signinButton {
+    align-self: center;
+    text-align: center;
+    border: 3px solid var(--black);
+    width: 102.5%;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem 0;
+}
+
+.signinButton:hover {
+  transition: all 0.2s ease-in-out 0s;
+  transform: scale(1.03, 1.03);
+}
+
+.errmsg2 {
+  border: 3px solid var(--red);
+  color: var(--red);
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.2rem;
+  align-self: center;
+  width: 96.5%;
+}
+
+a {
+  color: var(--black)
+}
+
+#signinHeader {
+  color: var(--black);
+  text-shadow: 3px 3px var(--white);
+}
