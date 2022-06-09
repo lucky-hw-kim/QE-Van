@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useContext } from 'react';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth.js';
 import axios from '../../api/axios.js'
-import AuthContext from '../../Auth/AuthProvider';
+import AuthContext from '../../../Context/AuthProvider'
 import './Login.css'
 const LOGIN_URL = 'auth/login';
 
@@ -15,7 +15,6 @@ const Login = () => {
 
     const userRef = useRef();
     const errRef = useRef();
-
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
@@ -43,16 +42,25 @@ const Login = () => {
                     headers: { 'Content-Type': 'application/json' }
                 }
             );
-            console.log(JSON.stringify(response?.data));
+            
 
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
+            const userId = response?.data?.userId;
 
-            setAuth({ username, password, accessToken });
+            window.localStorage.setItem('id', userId);
+            window.localStorage.setItem('isLoggedIn', true);
+            window.localStorage.setItem('token', accessToken);
+
+            console.log(response?.data);
+
+            
+            setAuth({ username, roles, accessToken, userId });
             setUser('');
             setPwd('');
             setSuccess(true);
             navigate(from, { replace: true });
+
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -66,6 +74,8 @@ const Login = () => {
             errRef.current.focus();
         }
     }
+
+
 
     return (
         <div className='signinContainer'>

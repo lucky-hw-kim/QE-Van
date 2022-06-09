@@ -5,9 +5,21 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+import useAuth from '../../hooks/useAuth'
+import axios from '../api/axios';
 
 const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
+
+  const {auth} = useAuth()
+  console.log(auth.userId);
+
   const [address, setAddress] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [image, setImage] = useState("");
 
   const handleSelect = async (value) => {};
 
@@ -23,21 +35,52 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
     height: "100vh",
   };
 
+  const handleImageUpload = (e) => {
+    console.log(e.target.files);
+    setImage(URL.createObjectURL(e.target.files[0]));
+  }
+
+  const handleEventubmit = async (e) => {
+    e.preventDefault();
+
+    //creates a new object with the current state values
+    const body = {
+      event_title: title,
+      event_description: description,
+      event_date: date,
+      event_location: location,
+      userId: auth.userId,
+      event_thumbnail: image
+    };
+    try {
+      const response = await axios.post("/event", body, {
+        headers: {
+          authorization: "Bearer " + auth.accessToken,
+        },
+      });
+      setCreateEventModal(false);
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="createEventContainer">
         <div className="modalContainer">
           <button
-            className="closeButtonTwo"
+            className="closeButtonE"
             onClick={() => setCreateEventModal(false)}
           >
             X
           </button>
-          <form className="editForm">
+          <h2 className="eventFormHeader">Create An Event</h2>
+          <form className="editForm" onSubmnit={handleEventubmit} enctype="multipart/form-data">
             <label for="post_title">Event Title</label>
-            <input type="text" name="createpost_title" />
+            <input value={title} onChange={(event) => setTitle(event.target.value)} type="text" name="createpost_title" />
             <label for="post_description">Description</label>
-            <textarea name="post_description" />
+            <textarea value={description} onChange={(event) => setDescription(event.target.value)} name="post_description" />
             <label for="post_location">Location:</label>
             <PlacesAutocomplete
               value={address}
@@ -52,6 +95,8 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
               }) => (
                 <div className="location-input">
                   <input
+                    value={location}
+                    onChange={(event) => setLocation(event.target.value)}
                     {...getInputProps({
                       placeholder: "Search Places ...",
                       className: "location-search-input",
@@ -81,10 +126,14 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
                 </div>
               )}
             </PlacesAutocomplete>
-            <label for="spotted_date">Date Spotted:</label>
-            <input type="date" name="spotted_date" />
+            <label for="event_thumbnail">Upload Image:</label>
+            <input accept="image/*" className="image_input" type="file" onChange={handleImageUpload}
+            placeholder="Click to upload ..." />
+            {/* <img src={image} /> */}
+            <label for="event_date">Event Date:</label>
+            <input type="date" name="event_date" value={date} onChange={(event) => setDate(event.target.value)}  />
 
-            <button type="submit" className="saveButton">
+            <button type="submit" className="saveButton2">
               SAVE
             </button>
           </form>

@@ -1,5 +1,13 @@
 import UserModel from "../Models/userModel.js";
 
+
+//Get All Users
+export const getAllUsers = async (req, res) => {
+  const users = await UserModel.find();
+  if (!users) return res.status(204).json({ 'message': 'No users found' });
+  res.json(users);
+}
+
 // Get User
 export const getUser = async (req, res) => {
   const id = req.params.id;

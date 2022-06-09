@@ -23,7 +23,14 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    refreshToken: [String],
+    refresToken:[String],
+    roles: {
+      User: {
+          type: Number,
+          default: 2001
+      },
+      Admin: Number
+    },
     profilePicture: String,
     saved_events: [],
     attending_events: []    

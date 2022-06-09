@@ -1,6 +1,7 @@
 .createEventContainer {
-  width: 34vw;
-  height: 70vh;
+  width: 36vw;
+  min-height: 70vh;
+  max-height: 78vh;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,42 +9,101 @@
   background-color: var(--peach);
   z-index: 1000;
   padding: 3% 3% 0 3%;
-  font-size: 0.65rem;
+  font-size: 0.85vw;
   box-shadow: 9px 9px var(--black);
   display: flex;
   justify-content: center;
   
 }
 
+.eventFormHeader {
+
+  font-size: 1.4vw;
+  color: var(--black);
+  text-shadow: 3px 3px var(--white);
+  background-color: var(--peach);
+  top: 3.3%;
+  width: fit-content;
+  padding: 0 1rem 0.5rem 1rem;
+  text-indent: none;
+  position: absolute;
+  text-align: center;
+  left: 21.5%;
+  margin-bottom: 3rem;
+
+}
+
 .modalContainer {
-  height: 77%;
-  width: 88%;
+  min-height: 60vh;
+  max-height: 65vh;
+  width: 32vw;
   border: 3px solid var(--black);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-bottom: 4.5vh;
 }
+
 .location-input {
   display: flex;
   flex-direction: column;
 }
+
+.modalContainer > form > input {
+  outline: none;
+  border: 3px solid var(--black);
+  background-color: transparent;
+  width: 30vw;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modalContainer > form >textarea {
+  width: 29.2vw !important;
+}
+
 .location-search-input {
   border: 3px solid var(--black);
   background-color: transparent;
   font-family: inherit;
   font-size: 0.5rem;
-  width: 26vw;
+  width: 30vw;
   height: 30px;
   margin-left: 0.2em;
   margin-bottom: 0.4rem;
   align-self: center;
   padding: 0px 10px;
 }
+
 .location-search-input::placeholder{
 color: var(--black);
 }
 
 .createpostTitle:focus{
   background-color: transparent;
+}
+
+.closeButtonE {
+  font-size: 1.5vw;
+  align-self: flex-end;
+  right: 0.4vw;
+  top: 0.4vw;
+  position: absolute;
+}
+
+.saveButton2 {
+  padding: 0.6rem 0;
+  align-self: center;
+  width: 32vw;
+  border: 3px solid var(--black);
+}
+
+.image_input::-webkit-file-upload-button {
+  background: transparent;
+  font-family: inherit;
+  margin-top: 2.2%;
+  margin-right: 2%;
+  border: 2px solid var(--black);
+  
 }

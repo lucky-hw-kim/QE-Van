@@ -1,8 +1,7 @@
 import UserModel from "../Models/userModel.js";
 
-export const handleLogout = async (req, res) => {
+const handleLogout = async (req, res) => {
   // On client, also delete the accessToken
-
 
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(204); //No content
@@ -23,4 +22,6 @@ export const handleLogout = async (req, res) => {
   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
   res.sendStatus(204);
 }
+
+export default handleLogout
 

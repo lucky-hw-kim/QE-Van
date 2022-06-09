@@ -5,10 +5,12 @@ import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from './Routes/UserRoute.js'
 import EventRoute from './Routes/EventRoute.js'
 import ForumRoute from './Routes/ForumRoute.js'
-import RefreshRoute from './Routes/RefreshRoute.js'
 import LogoutRoute from './Routes/LogoutRoute.js'
+import RefreshRoute from './Routes/RefreshRoute.js'
 import verifyJWT from './middleware/verifyJWT.js'
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import path from 'path'
 
 
 
@@ -25,18 +27,23 @@ const app = express();
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json({limit: '30mb', extened: true}));
-app.use(express.urlencoded({limit: '30mb', extened: true}));
+app.use(express.urlencoded({extened: true}));
 dotenv.config()
 
-// Usage of routes
-app.use('/auth', AuthRoute)
-app.use('/logout', LogoutRoute)
+//middleware for cookies
+app.use(cookieParser());
 
-app.use(verifyJWT);
+// Usage of routes
+
+app.use('/logout', LogoutRoute)
+app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
-app.use('/event', EventRoute)
 app.use('/forum', ForumRoute)
 app.use('/refresh', RefreshRoute)
+
+app.use(verifyJWT);
+app.use('/event', EventRoute)
+
 
 app.all('*', (req, res) => {
   res.status(404);

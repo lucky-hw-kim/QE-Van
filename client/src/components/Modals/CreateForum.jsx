@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import ReactDom from 'react-dom';
+import AuthContext, { AuthProvider } from '../../Context/AuthProvider';
+import axios from '../api/axios';
 import styles from './CreateForum.module.css'
+import useAuth from '../../hooks/useAuth'
+
 
 const CreateForum = ({setCreatePost, createPost}) => {
+  const {auth} = useAuth()
+  console.log(auth.userId);
+  const[title, setTitle] = useState("");
+  const[description, setDescription] = useState("");
+  const[date, setDate] = useState("");
+  const[location, setLocation] = useState("");
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -14,6 +24,29 @@ const CreateForum = ({setCreatePost, createPost}) => {
     zIndex: 9999,
     width: '100vw',
     height: '100vh',
+  }
+
+  const handleForumSubmit = async (e) => {
+    e.preventDefault();
+
+    //creates a new object with the current state values
+    const body = {
+      "post_title": title,
+      "post_description": description,
+      "spotted_date": date,
+      "spotted_location": location,
+      "userId": auth.userId
+    }
+    try {
+      const response = await axios.post('/forum', body, {
+        headers: { 
+          authorization: "Bearer " + auth.accessToken
+        }
+      })
+      setCreatePost(false)
+      console.log(response.data)
+    }
+    catch (err) {console.error(err)}
   }
 
   return ReactDom.createPortal(
@@ -29,17 +62,18 @@ const CreateForum = ({setCreatePost, createPost}) => {
         <div className={styles.header}>
           I spotted you!
         </div>
-
-        <label for="forumTitle">Title: </label>
-        <input className={styles.title} name="forumTitle"/>
-
-        <label for="forumDescription">Description:</label>
-        <textarea className={styles.body} name="forumDescription"/>
-        <label for="">Location:</label>
-        <input className={styles.body} name="forumLocation"/>
-        <label for="">Date You Spotted: </label>
-        <input type="date" name="forumDate" />
-        <button className={styles.saveButton}>Save</button>
+        <form onSubmit={handleForumSubmit}>
+          <label htmlfor="post_title">Title: </label>
+          <input className={styles.title} name="post_title"
+          value={title} onChange={(event) => setTitle(event.target.value)}/>
+          <label htmlfor="post_description">Description:</label>
+          <textarea className={styles.body} name="post_description" value={description} onChange={(event) => setDescription(event.target.value)}/>
+          <label htmlfor="spottted_location">Location:</label>
+          <input className={styles.body} name="spottted_location" value={location} onChange={(event) => setLocation(event.target.value)}/>
+          <label htmlfor="spotted_date">Date You Spotted: </label>
+          <input type="date" name="spotted_date" value={date} onChange={(event) => setDate(event.target.value)} />
+          <button type="submit" className={styles.saveButton}>Save</button>
+        </form>
 
       </div>
       </div>
@@ -47,5 +81,6 @@ const CreateForum = ({setCreatePost, createPost}) => {
     document.getElementById('portal')
   )
 }
+
 
 export default CreateForum

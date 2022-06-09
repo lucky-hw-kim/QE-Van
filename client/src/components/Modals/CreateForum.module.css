@@ -8,7 +8,7 @@
   background-color: var(--peach);
   z-index: 1000;
   padding: 3% 5% 7% 5%;
-  font-size: 0.65rem;
+  font-size: 0.85vw;
   box-shadow: 9px 9px var(--black);
   display: flex;
   justify-content: center;
@@ -16,21 +16,20 @@
 }
 
 .sub_eventModalContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 3px solid var(--black);
   padding: 2rem;
   height: 95%;
-  width: 92%;
   text-align: left;
+}
 
+.sub_eventModalContainer > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .closeButton {
-  font-size: 1.3rem;
-  /* align-self: flex-end; */
-  /* margin: -2% -7% 1% 0;  */
+  font-size: 1.5vw;
   align-self: flex-end;
   right: 5px;
   top: 5px;
@@ -38,41 +37,42 @@
 }
 
 .header {
-  font-size: 1.2rem;
+  font-size: 1.4vw;
   color: var(--black);
   text-shadow: 3px 3px var(--white);
   background-color: var(--peach);
   top: 4.5%;
-  text-align: center;
   width: fit-content;
   padding: 0 1rem 0.5rem 1rem;
   text-indent: none;
-  position: fixed;
+  position: absolute;
+  left: 27%;
+  right: 20%;
 }
 
-.sub_eventModalContainer > input {
+.sub_eventModalContainer > form > input {
   outline: none;
   border: 3px solid var(--black);
   background-color: transparent;
-  width: 84%;
+  width: 32vw;
   height: 2rem;
   margin-bottom: 1rem;
 }
 
-.sub_eventModalContainer > label {
-  align-self: left;
+.sub_eventModalContainer > form > label {
+  align-self: flex-start !important;
 }
 
-.CreateForumContainer > .sub_eventModalContainer > textarea {
+.CreateForumContainer > .sub_eventModalContainer > form > textarea {
   outline: none;
   border: 3px solid var(--black);
   background-color: transparent;
-  width: 84%;
   height: 5rem;
   margin-bottom: 1rem;
+  width: 32vw;
 }
 .saveButton {
   margin-top: 1rem;
   border: 3px solid var(--black);
-  width: 86%;
+  width: 33vw;
 }

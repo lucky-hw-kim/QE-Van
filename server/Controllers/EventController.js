@@ -1,6 +1,12 @@
 import EventModel from "../Models/eventModel.js"
 import UserModel from "../Models/userModel.js"
+import multer from "multer"
 
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./client/public/uploads")
+  }
+})
 
 //Get All events 
 
