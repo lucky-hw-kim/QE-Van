@@ -33,7 +33,6 @@ export const updateUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         req.body.password = await bcrypt.hash(password, salt)
       }
-
       const user = await UserModel.findByIdAndUpdate(id, req.body, {new: true});
       res.status(200).json(user);
 

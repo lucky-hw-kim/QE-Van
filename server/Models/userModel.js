@@ -23,6 +23,7 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    refreshToken: [String],
     profilePicture: String,
     saved_events: [],
     attending_events: []    

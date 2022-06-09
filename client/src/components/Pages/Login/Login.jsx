@@ -1,12 +1,18 @@
 import { useRef, useState, useEffect, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth.js';
 import axios from '../../api/axios.js'
-import AuthContext, { AuthProvider } from '../../Auth/AuthProvider';
+import AuthContext from '../../Auth/AuthProvider';
 import './Login.css'
 const LOGIN_URL = 'auth/login';
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -34,18 +40,19 @@ const Login = () => {
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ username, password }),
                 {
-                    headers: { 'Content-Type': 'application/json' },
-        
+                    headers: { 'Content-Type': 'application/json' }
                 }
             );
             console.log(JSON.stringify(response?.data));
 
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
+
+            setAuth({ username, password, accessToken });
             setUser('');
             setPwd('');
             setSuccess(true);
+            navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -62,9 +69,6 @@ const Login = () => {
 
     return (
         <div className='signinContainer'>
-            {success ? (
-                 <NavLink to='/home'></NavLink>
-            ) : (
                 <section>
                     <h1 id='signinHeader'>Sign In</h1>
                     <p ref={errRef} className={errMsg ? "errmsg2" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -97,7 +101,6 @@ const Login = () => {
                         </span>
                     </p>
                 </section>
-            )}
         </div>
     )
 }
