@@ -1,12 +1,6 @@
 import EventModel from "../Models/eventModel.js"
 import UserModel from "../Models/userModel.js"
-import multer from "multer"
 
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, "./client/public/uploads")
-  }
-})
 
 //Get All events 
 
@@ -26,7 +20,10 @@ export const getAllEvents = async (req, res) => {
 
 // Create Event
 export const createEvent = async (req, res) => {
-  const newEvent = new EventModel(req.body)
+  const newEvent = new EventModel(
+    {...req.body, event_thumbnail: req.body.event_thumbnail}
+  )
+
   try {
     await newEvent.save()
     res.status(200).json("Event Created")
@@ -34,6 +31,7 @@ export const createEvent = async (req, res) => {
     res.status(500).json(err)
   }
 }
+
 // Get Event
 export const getEvent = async (req, res) => {
   const id = req.params.id
@@ -60,7 +58,7 @@ export const updateEvent = async (req, res) => {
 
     if(event.userId === userId || user.isAdmin) {
 
-      await event.updateOne({ $set : req.body });
+      await event.updateOne({ $set :  {...req.body, event_thumbnail: req.body.event_thumbnail} });
       res.status(200).json("Post updated")
     } else {
       res.status(500).send("Not Authorized")

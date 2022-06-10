@@ -21,7 +21,7 @@ const EventSchema = mongoose.Schema(
       type: String, required: true
     },
     event_link: {
-      type: String, required: true
+      type: String
     },
     saved_userId: [],
     attending_userId: []

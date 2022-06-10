@@ -40,9 +40,9 @@ app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
 app.use('/forum', ForumRoute)
 app.use('/refresh', RefreshRoute)
+app.use('/event', EventRoute)
 
 app.use(verifyJWT);
-app.use('/event', EventRoute)
 
 
 app.all('*', (req, res) => {
