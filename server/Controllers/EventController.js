@@ -20,13 +20,16 @@ export const getAllEvents = async (req, res) => {
 
 // Create Event
 export const createEvent = async (req, res) => {
-  const newEvent = new EventModel(
-    {...req.body, event_thumbnail: req.body.event_thumbnail}
-  )
 
+  // const {event_title, event_date, event_description, event_location, event_link, userId, event_thumbnail} = req.body
+
+  const newEvent = new EventModel(req.body)
+  console.log(req.file)
   try {
+
     await newEvent.save()
     res.status(200).json("Event Created")
+
   } catch (err) {
     res.status(500).json(err)
   }

@@ -1,17 +1,20 @@
 import express from 'express';
 import { attendingEvent, createEvent, deleteEvent, getAllEvents, getEvent, saveEvent, updateEvent } from '../Controllers/EventController.js';
 import multer from "multer"
-{}
-const storage = multer.diskStorage({
+
+const storage1 = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "../../client/public/uploads/")
+    callback(null, "../../client/src/assets")
   },
   filename: (req, file, callback) => {
-    callback(null, file.originalname)
+    
+    callback(null,file.originalname)
   }
 })
 
-const upload = multer({storage: storage})
+
+const upload = multer({storage: storage1})
+
 
 
 const router = express.Router();
