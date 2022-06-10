@@ -1,7 +1,7 @@
 .EventContainer {
   margin-bottom: 30px;
-  width: 80%;
-  min-height: 110px;
+  width: 34vw;
+  /* min-height: 17vh; */
   display: flex;
   justify-content: space-between;
   background-color: var(--white);
@@ -19,14 +19,13 @@
 
 .imageContainer {
   width: 120px;
-  max-height: 110px;
+  max-height: 100%;
   background-color: var(--green);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 0.6em;
-
 }
 
 .imageContainer > img {
@@ -37,9 +36,9 @@
 .infoContainer {
   display: flex;
   flex-direction: column;
-  padding: 3%;
+  padding: 1.3vw;
   overflow: auto;
-  max-width: 220px;
+  max-width: 30vw;
 
  
 }
@@ -51,28 +50,28 @@
 }
 
 .location {
-  font-size: 0.55rem;
+  font-size: 0.8vw;
   color: var(--grey);
 }
 
 .name {
-  font-size: 0.7rem;
+  font-size: 1vw;
 }
 
 .date {
-  font-size: 0.55rem;
+  font-size: 0.8vw;
   color: var(--grey);
 }
 
 
 .buttonContainer {
   position: relative;
-  bottom: -10px;
+  bottom: -5px;
   padding-top: 2%;
   display: flex;
   justify-content: end;
   gap: 1rem;
-  font-size: 0.64rem;
+  font-size: 1vw;
 }
 
 .buttonSave {

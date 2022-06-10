@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactDom from "react-dom";
 import "./CreateEventModal.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import useAuth from '../../hooks/useAuth'
 import axios from '../api/axios';
+import AuthContext from "../../Context/AuthProvider";
+
 
 const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
 
-  const {auth} = useAuth()
-  console.log(auth.userId);
-
+  const authCtx = useContext(AuthContext);
   const [address, setAddress] = useState("");
 
   const [title, setTitle] = useState("");
@@ -20,6 +19,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
+  const [link, setLink] = useState("");
 
   const handleSelect = async (value) => {};
 
@@ -36,34 +36,38 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
   };
 
   const handleImageUpload = (e) => {
-    console.log(e.target.files);
     setImage(URL.createObjectURL(e.target.files[0]));
+    console.log(e.target.files);
   }
 
-  const handleEventubmit = async (e) => {
+  const handleEventsubmit = async (e) => {
     e.preventDefault();
 
     //creates a new object with the current state values
-    const body = {
-      event_title: title,
-      event_description: description,
-      event_date: date,
-      event_location: location,
-      userId: auth.userId,
-      event_thumbnail: image
-    };
+    const formData = new FormData();
+    // formData.append("userId", auth.userId)
+    formData.append("event_title", title)
+    formData.append("event_description", description)
+    formData.append("event_date", date)
+    formData.append("event_location", location)
+    formData.append("event_thumbnail", image)
+    formData.append("event_link", link)
+
     try {
-      const response = await axios.post("/event", body, {
+      const response = await axios.post("/event", formData, {
         headers: {
-          authorization: "Bearer " + auth.accessToken,
+          authorization: "Bearer " + authCtx.token,
         },
       });
+
       setCreateEventModal(false);
       console.log(response.data);
+
     } catch (err) {
       console.error(err);
     }
   };
+
 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
@@ -76,7 +80,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
             X
           </button>
           <h2 className="eventFormHeader">Create An Event</h2>
-          <form className="editForm" onSubmnit={handleEventubmit} enctype="multipart/form-data">
+          <form className="editForm" onSubmit={handleEventsubmit} enctype="multipart/form-data">
             <label for="post_title">Event Title</label>
             <input value={title} onChange={(event) => setTitle(event.target.value)} type="text" name="createpost_title" />
             <label for="post_description">Description</label>
@@ -127,9 +131,10 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
               )}
             </PlacesAutocomplete>
             <label for="event_thumbnail">Upload Image:</label>
-            <input accept="image/*" className="image_input" type="file" onChange={handleImageUpload}
-            placeholder="Click to upload ..." />
+            <input accept="image/*" className="image_input" type="file" onChange={handleImageUpload} filename="event_thumbnail"/>
             {/* <img src={image} /> */}
+            <label for="event_link">Event Link:</label>
+            <input type="url" name="event_link" value={link} onChange={(event) => setLink(event.target.value)}  />
             <label for="event_date">Event Date:</label>
             <input type="date" name="event_date" value={date} onChange={(event) => setDate(event.target.value)}  />
 

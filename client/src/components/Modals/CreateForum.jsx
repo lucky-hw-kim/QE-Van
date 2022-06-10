@@ -3,12 +3,13 @@ import ReactDom from 'react-dom';
 import AuthContext, { AuthProvider } from '../../Context/AuthProvider';
 import axios from '../api/axios';
 import styles from './CreateForum.module.css'
-import useAuth from '../../hooks/useAuth'
 
 
 const CreateForum = ({setCreatePost, createPost}) => {
-  const {auth} = useAuth()
-  console.log(auth.userId);
+
+  const authCtx = useContext(AuthContext);
+
+  console.log(authCtx.username);
   const[title, setTitle] = useState("");
   const[description, setDescription] = useState("");
   const[date, setDate] = useState("");
@@ -35,12 +36,12 @@ const CreateForum = ({setCreatePost, createPost}) => {
       "post_description": description,
       "spotted_date": date,
       "spotted_location": location,
-      "userId": auth.userId
+      "userId": authCtx.userId
     }
     try {
       const response = await axios.post('/forum', body, {
         headers: { 
-          authorization: "Bearer " + auth.accessToken
+          authorization: "Bearer " + authCtx.token
         }
       })
       setCreatePost(false)

@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 35px;
+  gap: 8vh;
+  font-size: 1.5vw;
 }
 
 .NavBarContainer > button {

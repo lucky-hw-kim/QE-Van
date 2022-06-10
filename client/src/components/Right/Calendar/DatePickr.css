@@ -1,36 +1,36 @@
 .DatePickerContainer {
-  /* width: 16%;
-  margin-top: 5%;
-  */
+  width: 31vw;
+  max-height: 37vh;
   display: flex;
   justify-content: center;
   color: var(--black);
-  padding: 0.5rem;
+  padding: 1vh;
   margin-top: 1rem;
-  max-height: 95%;
 }
 
 
 .react-calendar {
   padding: 0 0.5rem 0.5rem 0.5rem;
-  max-width: 88%;
-  font-size: 0.8rem; 
+  max-width: 28vw;
+  max-height: 36vh;
   text-align: center;
   border: 3px solid var(--black);
-  /* background-color: var(--white);*/
   box-shadow: 9px 9px var(--black); 
 }
 
 div.react-calendar__navigation {
-  margin: 1.3em 1.3em 1em 1em; 
+  font-size: 1.02vw;
+  margin: 1.3vw 1.3vw 1vw 1vw; 
   color: var(--black);
   border: 3px solid var(--black);
   padding: 0.15rem;
+  
+  
 }
 
 abbr {
-  font-size: 0.73rem; 
-  margin: 5px;
+  font-size: 1.1vw; 
+
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {

@@ -1,46 +1,55 @@
 import './App.css';
 import Home from './components/Pages/Home/Home';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 import About from './components/Pages/About/About';
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 import Register from './components/Pages/Login/Register';
 import Login from './components/Pages/Login/Login';
-import Missing from './components/Pages/Missing/Missing';
-import RequireAuth from './components/Pages/RequireAuth/RequireAuth';
 import Index from './components/Pages/Index/Index';
+import AuthContext, { AuthContextProvider } from './Context/AuthProvider';
 export const EventContext = createContext()
 
 
-const ROLES = {
-  'User': 2001,
-  'Admin': 5150
-}
+// const ROLES = {
+//   'User': 2001,
+//   'Admin': 5150
+// }
+
+const RequireAuth = () => {
+  const authCtx = useContext(AuthContext);
+  if (!authCtx.token) {
+    return <Navigate to="/home" />;
+  }
+  return <Outlet />;
+};
+
 
 function App() {
   const [eventModal, setEventModal] = useState(false);
   const [forumModal, setForumModal] = useState(false);
-  const loggedIn = window.localStorage.getItem("isLoggedIn");
+
   return (
+
     <div className="App">
-       <EventContext.Provider value={{eventModal, setEventModal, forumModal, setForumModal}} >
-      <Routes>
-        {/* Public Routes */}
+      <AuthContextProvider>
+        <EventContext.Provider value={{eventModal, setEventModal, forumModal, setForumModal}} >
+          <Routes>
+            {/* Public Routes */}
+            <Route path='home' element={<Index/>}/>
+            <Route path='about' element={<About/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
 
-        <Route index element={loggedIn ? <Home/> : <Index/>}/>
-        <Route path='about' element={<About/>}/>
-        <Route path='login' element={<Login/>}/>
-        <Route path='register' element={<Register/>}/>
+            {/* Protected Routes */}
+            <Route path='/' element={<RequireAuth/>}>
+              <Route path='/' element={<Home/>}/>
+            </Route>
+            {/* Catch all routes */}
+            <Route path="*" element={<Index />} />
 
-
-        {/* Protected Routes */}
-        <Route path='/' element={<RequireAuth/>}>
-         <Route index element={<Home/>}/>
-        </Route>
-        {/* Catch all routes */}
-        <Route path="*" element={<Missing />} />
-
-      </Routes>
-      </EventContext.Provider>
+          </Routes>
+        </EventContext.Provider>
+      </AuthContextProvider>
 
     </div>
   );

@@ -3,8 +3,15 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
+
+
 dotenv.config();
 // Register User
+
+//Generate jwt for user
+const generateJwt = (id, secretKey) => {
+  return jwt.sign({id}, secretKey,{ expiresIn: '2h'})
+}
 
 export const registerUser = async (req, res) => {
   const { username, firstname, lastname, password, pronoun } = req.body;
@@ -18,18 +25,22 @@ export const registerUser = async (req, res) => {
   const duplicate = await UserModel.findOne({ username: username }).exec();
   if (duplicate) return res.sendStatus(409); //Conflict
 
-  try {
-    const hashedPass = await bcrypt.hash(password, 10);
-    const newUser = new UserModel({
-      username,
-      password: hashedPass,
-      firstname,
-      lastname,
-      pronoun,
-    });
+  const salt = await bcrypt.genSalt(10)
 
+  const hashedPass = await bcrypt.hash(password, salt);
+  const newUser = new UserModel({
+    username,
+    password: hashedPass,
+    firstname,
+    lastname,
+    pronoun,
+  });
+
+  const accessToken = generateJwt(username, process.env.ACCESS_TOKEN_SECRET)
+
+  try {
     await newUser.save();
-    res.status(200).json(newUser);
+    res.status(200).json({newUser, accessToken});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -38,82 +49,28 @@ export const registerUser = async (req, res) => {
 // login user
 // !!!!!!!!!!
 export const loginUser = async (req, res) => {
-  const cookies = req.cookies;
+  const {username, password} = req.body
 
-  console.log(`cookie available at login: ${JSON.stringify(cookies)}`);
-
-  const { username, password } = req.body;
-  if (!username || !password)
+  if(!username || !password) {
     return res
-      .status(400)
-      .json({ message: "Username and password are required." });
+    .status(400)
+    .json({ message: "Username and password are required." });
+  }
 
-  const foundUser = await UserModel.findOne({ username: username }).exec();
-  if (!foundUser) return res.sendStatus(401); //Unauthorized
+  try {
+    const user = await UserModel.findOne({username: username})
 
-  // evaluate password
-  const match = await bcrypt.compare(password, foundUser.password);
+    if(user) {
+      const validity = await bcrypt.compare(password, user.password)
+      const accessToken = generateJwt(user.id, process.env.ACCESS_TOKEN_SECRET)
 
-  if (match) {
-    const roles = Object.values(foundUser.roles).filter(Boolean);
-
-    // create JWTs
-
-    const accessToken = jwt.sign(
-      {
-        UserInfo: {
-          username: foundUser.username,
-          roles: roles,
-          userId: foundUser.id,
-        },
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "20s" }
-    );
-    const newRefreshToken = jwt.sign(
-      { username: foundUser.username, roles: roles,
-        userId: foundUser.id },
-      process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
-    );
-
-    // Changed to let keyword
-    let newRefreshTokenArray = !cookies?.jwt
-      ? foundUser.refreshToken
-      : foundUser.refreshToken.filter((rt) => rt !== cookies.jwt);
-
-    if (cookies?.jwt) {
-      const refreshToken = cookies.jwt;
-      const foundToken = await User.findOne({ refreshToken }).exec();
-    
-
-    // Detected refresh token reuse!
-    if (!foundToken) {
-      console.log("attempted refresh token reuse at login!");
-      // clear out ALL previous refresh tokens
-      newRefreshTokenArray = [];
+      validity ? res.status(200).json({user, accessToken}) : res.status(400).json("Wrong password")
     }
-    res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
-    foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
+    else {
+      res.status(404).json("User does not exist")
+    }
   }
-  // Saving refreshToken with current user
-  // if(newRefreshToken.length > 0){
-
-  const result = await foundUser.save();
-  console.log(result);
-  console.log(roles);
-
-  res.cookie("jwt", newRefreshToken, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "None",
-    maxAge: 24 * 60 * 60 * 1000,
-  });
-  
-  // Send authorization roles and access token to user
-  let userId = foundUser.userId
-  res.json({ roles, accessToken, userId });
-  } else {
-    res.sendStatus(401);
+  catch (error) {
+    res.status(500).json({message: error.message})
   }
-};
+}

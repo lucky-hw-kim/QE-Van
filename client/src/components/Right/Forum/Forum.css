@@ -1,10 +1,10 @@
 .ForumContainer {
   border: 3px solid var(--black);
-  padding: 0.25rem;
+  padding: 0.7vw;
   margin-bottom:0.3rem;
   line-height: 1.3rem;
   color: var(--white);
-
+  font-size: 1vw;
 }
 
 .ForumContainer:hover{
@@ -17,5 +17,5 @@
   color: var(--blue);
   line-height: 1rem;
   padding-bottom: 0.1rem;
-  font-size: 0.65rem;
+  font-size: 1.1vw;
 }

@@ -2,11 +2,12 @@ import React, {useContext, useState} from 'react'
 import { EventContext } from '../../App';
 import ReactDom from 'react-dom'
 import './ForumModal.css'
+import AuthContext from "../../Context/AuthProvider";
 
 const ForumModal = ({post, handleDeletePost, handleEditPost, editPost }) => {
-
   const {forumModal, setForumModal} = useContext(EventContext);
-  const [postValue, setPostValue] = useState(post)
+  const [postValue, setPostValue] = useState(post);
+  const authCtx = useContext(AuthContext);
 
   const OVERLAY_STYLES = {
     position: 'fixed',

@@ -13,7 +13,6 @@ import cookieParser from 'cookie-parser';
 import path from 'path'
 
 
-
 const corsOptions ={
   origin:'*', 
   credentials:true,          
@@ -31,18 +30,18 @@ app.use(express.urlencoded({extened: true}));
 dotenv.config()
 
 //middleware for cookies
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // Usage of routes
 
 app.use('/logout', LogoutRoute)
 app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
-app.use('/forum', ForumRoute)
 app.use('/refresh', RefreshRoute)
-app.use('/event', EventRoute)
 
 app.use(verifyJWT);
+app.use('/forum', ForumRoute)
+app.use('/event', EventRoute)
 
 
 app.all('*', (req, res) => {
