@@ -3,17 +3,14 @@ import ReactDom from "react-dom";
 import "./CreateEventModal.css";
 import axios from "../api/axios";
 import AuthContext from "../../Context/AuthProvider";
-
 const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
   const authCtx = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [link, setLink] = useState("");
-
-  const handleSelect = async (value) => {};
 
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -27,38 +24,62 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
     height: "100vh",
   };
 
-  const handleImageUpload = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files);
-  };
-
-  const handleEventsubmit = async (e) => {
-    e.preventDefault();
-
-    //creates a new object with the current state values
-    const formData = new FormData();
-    formData.append("event_title", title);
-    formData.append("event_description", description);
-    formData.append("event_date", date);
-    formData.append("event_location", location);
-    formData.append("event_link", link);
-    formData.append("userId", authCtx.userId);
-    formData.append("event_thumbnail", image);
-    console.log(formData);
-    try {
-      const response = await axios.post("/event", formData, {
-        headers: {
-          'content-type': "multipart/form-data",
-          authorization: "Bearer " + authCtx.token,
-        },
-      });
-      setCreateEventModal(false);
-      console.log(response.data);
-    } catch (err) {
-      console.error(err);
+  const handleImageUpload = async(event) => {
+    if(event.target.files && event.target.files[0]){
+      let img = event.target.files[0];
+      console.log(img);
+      setImage(
+        img
+      );
     }
   };
 
+  const handleEventSubmit = async (e) => {
+    e.preventDefault();
+
+    //creates a new object with the current state values
+    const newEvent = {
+      userId: authCtx.userId,
+      event_title: title,
+      event_description: description,
+      event_date: date,
+      event_location:location,
+      event_link: link
+    }
+    if(image) {
+      const data = new FormData();
+      const filename = Date.now() + image.name
+      data.append("name", filename);
+      data.append("file", image);
+      newEvent.event_thumbnail = filename;
+      console.log(newEvent)
+    
+      try {
+        const result = await axios.post("/upload", data, {
+          headers: {
+            'Content-Type': "multipart/form-data"
+          },
+        })
+      }catch(err) {
+        console.log(err);
+      }
+    }
+    handleSubmitForm(newEvent);
+  };
+
+  const handleSubmitForm = (newEvent) => {
+       axios.post("/event", newEvent, {
+          headers: {
+            // 'Content-Type': "multipart/form-data",
+            authorization: "Bearer " + authCtx.token,
+          },
+        }).then (result => {
+          console.log(result.data)
+          setCreateEventModal(false);
+        }
+        ).catch (err => { console.error(err);})
+  }
+ 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="createEventContainer">
@@ -72,7 +93,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
           <h2 className="eventFormHeader">Create An Event</h2>
           <form
             className="editForm"
-            onSubmit={handleEventsubmit}
+            onSubmit={handleEventSubmit}
             encType="multipart/form-data"
           >
             <label for="event_title">Event Title</label>
@@ -100,8 +121,9 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
               type="file"
               onChange={handleImageUpload}
               name="event_thumbnail"
+              accept="image/*"
             />
-            {/* <img src={image} /> */}
+            {/* <img src={URL.createObjectURL(image)} /> */}
             <label for="event_link">Event Link:</label>
             <input
               type="text"

@@ -7,12 +7,11 @@ import EventRoute from "./Routes/EventRoute.js";
 import ForumRoute from "./Routes/ForumRoute.js";
 import LogoutRoute from "./Routes/LogoutRoute.js";
 import RefreshRoute from "./Routes/RefreshRoute.js";
+import UploadRoute from "./Routes/UploadRoute.js";
 import verifyJWT from "./middleware/verifyJWT.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
-import multer from "multer";
-
 const corsOptions = {
   origin: "*",
   credentials: true,
@@ -24,7 +23,7 @@ const app = express();
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json({ limit: "30mb", extened: true }));
-app.use(express.urlencoded({ extened: true }));
+app.use(express.urlencoded({ limit: "30mb", extened: true }));
 dotenv.config();
 
 //middleware for cookies
@@ -36,6 +35,8 @@ app.use("/logout", LogoutRoute);
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
 app.use("/refresh", RefreshRoute);
+app.use("/upload", UploadRoute);
+
 app.use(verifyJWT);
 app.use("/event", EventRoute);
 app.use("/forum", ForumRoute);
