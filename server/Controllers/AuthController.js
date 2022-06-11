@@ -37,7 +37,7 @@ export const registerUser = async (req, res) => {
   });
 
   const accessToken = generateJwt(username, process.env.ACCESS_TOKEN_SECRET)
-
+  console.log(req.body)
   try {
     await newUser.save();
     res.status(200).json({newUser, accessToken});

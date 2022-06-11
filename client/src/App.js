@@ -45,7 +45,7 @@ function App() {
               <Route path='/' element={<Home/>}/>
             </Route>
             {/* Catch all routes */}
-            {/* <Route path="*" element={<Index />} /> */}
+            <Route path="*" element={<Index />} />
 
           </Routes>
         </EventContext.Provider>

@@ -8,34 +8,35 @@ import './Register.css';
 const USER_REGEX = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%/]).{8,24}$/;
 
-const REGISTER_URL = '/auth/register';
 
 const Register = () => {
 
     const ctx = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const initialState = {
+        username: '',
+        password: '',
+        matchPwd: '',
+        firstname: '',
+        lastname: '',
+    }
+
+    const handleChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
+      };
+
     const userRef = useRef();
     const errRef = useRef();
-
-    const [username, setUsername] = useState('');
+    const [data, setData] = useState(initialState)
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
-
-    const [password, setPassword] = useState('');
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
-
-    const [matchPwd, setMatchPwd] = useState('');
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
-
-    const [firstname, setFirstname] = useState('')
     const [firstnameFocus, setFirstnameFocus] = useState('')
-
-    const [lastname, setLastname] = useState('')
     const [lastnameFocus, setLastnameFocus] = useState('')
-
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -44,48 +45,46 @@ const Register = () => {
     }, [])
 
     useEffect(() => {
-      setValidName(USER_REGEX.test(username));
-  }, [username])
+      setValidName(USER_REGEX.test(data.username));
+  }, [data.username])
 
     useEffect(() => {
-        setValidPwd(PWD_REGEX.test(password));
-        setValidMatch(password === matchPwd);
-    }, [password, matchPwd])
+        setValidPwd(PWD_REGEX.test(data.password));
+        setValidMatch(data.password === data.matchPwd);
+    }, [data.password, data.matchPwd])
 
     useEffect(() => {
         setErrMsg('');
-    }, [username, password, matchPwd])
+    }, [data.username, data.password, data.matchPwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // if button enabled with JS hack
-        const v1 = USER_REGEX.test(username);
-        const v2 = PWD_REGEX.test(password);
+        const v1 = USER_REGEX.test(data.username);
+        const v2 = PWD_REGEX.test(data.password);
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
             return;
         }
+
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ username, password, firstname, lastname }),
+            const response = await axios.post('/auth/register',
+                JSON.stringify({ username: data.username, password:data.password, firstname: data.firstname, lastname:data.lastname }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     // withCredentials: true
                 }
             );
-            ctx.onRegister(response.data.user.username, response.data.accessToken)
-            navigate('/')
-            // console.log(response?.data);
-            console.log(response?.accessToken);
-            // console.log(JSON.stringify(response))
-            setSuccess(true);
-            // clear input field
-            setUsername('');
-            setPassword('');
-            setMatchPwd('');
-            setFirstname('');
-            setLastname('');
-        } catch (err) {
+                ctx.onRegister(response.data.newUser.username, response.data.accessToken, response.data.newUser._id)
+                navigate('/')
+                // console.log(response?.data);
+                console.log(response?.accessToken);
+                // console.log(JSON.stringify(response))
+                setSuccess(true);
+                // clear input field
+                setData(initialState)
+            }
+         catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
@@ -121,7 +120,7 @@ const Register = () => {
                         <label htmlFor="username">
                             Email: 
                             <span className={validName ? "valid" : "hide"}><i className="nes-icon size-1x check"/></span>
-                            <span className={validName || !username ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
+                            <span className={validName || !data.username ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
                         </label>
                         <input
                             name="username"
@@ -129,15 +128,14 @@ const Register = () => {
                             id="username"
                             ref={userRef}
                             autoComplete="off"
-                            onChange={(e) => setUsername(e.target.value)}
-                            value={username}
+                            onChange={handleChange}
                             required
                             aria-invalid={validName ? "false" : "true"}
                             aria-describedby="uidnote"
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
                         />
-                        <p id="uidnote" className={userFocus && username && !validName ? "instructions" : "offscreen"}>
+                        <p id="uidnote" className={userFocus && data.username && !validName ? "instructions" : "offscreen"}>
                             Please write valid email address
                         </p>
                         <label htmlFor="firstname">
@@ -149,8 +147,7 @@ const Register = () => {
                             id="firstname"
                             ref={userRef}
                             autoComplete="off"
-                            onChange={(e) => setFirstname(e.target.value)}
-                            value={firstname}
+                            onChange={handleChange}
                             required
                             aria-describedby="uidnote"
                             onFocus={() => setFirstnameFocus(true)}
@@ -165,8 +162,7 @@ const Register = () => {
                             id="lastname"
                             ref={userRef}
                             autoComplete="off"
-                            onChange={(e) => setLastname(e.target.value)}
-                            value={lastname}
+                            onChange={handleChange}
                             required
                             aria-invalid={validName ? "false" : "true"}
                             aria-describedby="uidnote"
@@ -177,14 +173,13 @@ const Register = () => {
                         <label htmlFor="password">
                             Password:
                             <span className={validPwd ? "valid" : "hide"}><i className="nes-icon size-1x check"/></span>
-                            <span className={validPwd || !password ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
+                            <span className={validPwd || !data.password ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
                         </label>
                         <input
                             name="password"
                             type="password"
                             id="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            value={password}
+                            onChange={handleChange}
                             required
                             aria-invalid={validPwd ? "false" : "true"}
                             aria-describedby="pwdnote"
@@ -199,15 +194,14 @@ const Register = () => {
 
                         <label htmlFor="confirm_pwd">
                             Confirm Password:
-                            <span className={validMatch && matchPwd ? "valid" : "hide"}><i className="nes-icon size-1x check"/></span>
-                            <span className={validMatch || !matchPwd ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
+                            <span className={validMatch && data.matchPwd ? "valid" : "hide"}><i className="nes-icon size-1x check"/></span>
+                            <span className={validMatch || !data.matchPwd ? "hide" : "invalid"}><i className="nes-icon size-1x exclamation"/></span>
                         </label>
                         <input
-                            name="confirm_pwd"
+                            name="matchPwd"
                             type="password"
-                            id="confirm_pwd"
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            value={matchPwd}
+                            id="matchPwd"
+                            onChange={handleChange}
                             required
                             aria-invalid={validMatch ? "false" : "true"}
                             aria-describedby="confirmnote"

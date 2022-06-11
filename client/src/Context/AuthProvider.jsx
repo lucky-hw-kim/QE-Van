@@ -59,7 +59,7 @@ export const AuthContextProvider = (props) => {
     setUserId(null);
   };
 
-  const registerHandler = (userName, token) => {
+  const registerHandler = (userName, token, userId) => {
     localStorage.setItem('token', token);
     localStorage.setItem('name', userName);
     localStorage.setItem('userId', userId);
