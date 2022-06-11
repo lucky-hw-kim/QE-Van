@@ -11,6 +11,7 @@ import verifyJWT from "./middleware/verifyJWT.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from "path";
+import multer from "multer";
 
 const corsOptions = {
   origin: "*",
@@ -35,7 +36,6 @@ app.use("/logout", LogoutRoute);
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
 app.use("/refresh", RefreshRoute);
-
 app.use(verifyJWT);
 app.use("/event", EventRoute);
 app.use("/forum", ForumRoute);

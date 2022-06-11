@@ -48,7 +48,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
     try {
       const response = await axios.post("/event", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'content-type': "multipart/form-data",
           authorization: "Bearer " + authCtx.token,
         },
       });
@@ -73,7 +73,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
           <form
             className="editForm"
             onSubmit={handleEventsubmit}
-            enctype="multipart/form-data"
+            encType="multipart/form-data"
           >
             <label for="event_title">Event Title</label>
             <input
@@ -96,11 +96,9 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
             />
             <label for="event_thumbnail">Upload Image:</label>
             <input
-              accept="image/*"
               className="image_input"
               type="file"
               onChange={handleImageUpload}
-              filename="event_thumbnail"
               name="event_thumbnail"
             />
             {/* <img src={image} /> */}
@@ -113,7 +111,7 @@ const CreateEventModal = ({ createEventModal, setCreateEventModal }) => {
             />
             <label for="event_date">Event Date:</label>
             <input
-              type="date"
+              type="datetime-local"
               name="event_date"
               value={date}
               onChange={(event) => setDate(event.target.value)}

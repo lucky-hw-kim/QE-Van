@@ -10,7 +10,7 @@ export const getAllEvents = async (req, res) => {
     const events = await EventModel.find().sort({ event_date : 1 })
 
     res.status(200).json(events)
-    
+    console.log(events);
   } catch (error) {
     res.status(500).json(error)
   }
@@ -24,7 +24,8 @@ export const createEvent = async (req, res) => {
   // const {event_title, event_date, event_description, event_location, event_link, userId, event_thumbnail} = req.body
 
   const newEvent = new EventModel(req.body)
-  console.log(req.file)
+  console.log("file:",req)
+  console.log("body:",req.body)
   try {
 
     await newEvent.save()

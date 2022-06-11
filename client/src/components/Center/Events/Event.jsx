@@ -3,15 +3,13 @@ import styles from './Event.module.css'
 import { EventContext } from '../../../App';
 import EventModal from '../../Modals/EventModal';
 
-const Event = ({event, id, addModalEvent}) => {
+const Event = ({event, id, addModalEvent, onFilter, onUpdate, onDelete}) => {
 
   const [shiftRight, setShiftRight] = useState("");
   const {setEventModal, eventModal} = useContext(EventContext);
   const [saveEvent, setSaveEvent] = useState(false)
   const [attendEvent, setAttendEvent] = useState(false)
 
-
-  
 
   useEffect(()=>{
     if(parseInt(id) % 2 === 0) {
@@ -29,6 +27,9 @@ const Event = ({event, id, addModalEvent}) => {
     setAttendEvent(!attendEvent)
   }
 
+  const eventDate = new Date(event.event_date).toString().split(" ").splice(0,3).join(" ").toUpperCase() 
+  const eventTime = new Date(event.event_date).toString().split(" ").splice(4,1)[0].split(":").splice(0,2).join(":")+ " PST"
+
   return (
     <>
     <div className={`${styles.EventContainer} ${shiftRight}`} 
@@ -36,19 +37,13 @@ const Event = ({event, id, addModalEvent}) => {
       setEventModal(!eventModal);
       addModalEvent(event);
     }}
-    // data-date={event.event_date}
-    // data-name={event.event_name}
-    // data-location={event.event_location}
-    // data-img={event.event_thumbnail}
-    // data-desc={event.event_description}
-    // data-link={event.event_link}
     >
     <div className={styles.imageContainer}>
-        <img src={event.event_thumbnail} alt="eventimg" />
+        <img src={event.event_thumbnail} alt="img" />
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.date}>{event.event_date.toUpperCase()} PST</div>
-        <div className={styles.name}>{event.event_name}</div>
+        <div className={styles.date}>{eventDate} {eventTime}</div>
+        <div className={styles.name}>{event.event_title}</div>
         <div className={styles.location}>@ {event.event_location}</div>
         <div className={styles.buttonContainer}>
           <button className={styles.buttonSave} onClick={handleSave}>{saveEvent ? "Saved" : "Save"}</button>

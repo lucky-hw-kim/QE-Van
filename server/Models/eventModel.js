@@ -15,7 +15,8 @@ const EventSchema = mongoose.Schema(
       type: String, required: true
     },
     event_thumbnail: {
-      type: String
+      data: Buffer,
+      contentType: String
     },
     event_description: {
       type: String, required: true
