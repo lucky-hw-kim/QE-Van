@@ -5,13 +5,13 @@ import axios from '../api/axios';
 import styles from './CreateForum.module.css'
 
 
-const CreateForum = ({setCreatePost, createPost}) => {
+const UpdateForum = ({ post, setEdit, editForum, setEditForum, setForumModal}) => {
 
   const authCtx = useContext(AuthContext);
-  const[title, setTitle] = useState("");
-  const[description, setDescription] = useState("");
-  const[date, setDate] = useState("");
-  const[location, setLocation] = useState("");
+  const[title, setTitle] = useState(post.post_title);
+  const[description, setDescription] = useState(post.post_description);
+  const[date, setDate] = useState(post.spotted_date);
+  const[location, setLocation] = useState(post.spotted_location);
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -37,12 +37,13 @@ const CreateForum = ({setCreatePost, createPost}) => {
       "userId": authCtx.userId
     }
     try {
-      const response = await axios.post('/forum', body, {
+      const response = await axios.put(`/forum/${post._id}`, body, {
         headers: { 
           authorization: "Bearer " + authCtx.token
         }
       })
-      setCreatePost(false)
+      setEditForum(false)
+      setForumModal(false)
       console.log(response.data)
     }
     catch (err) {console.error(err)}
@@ -53,7 +54,7 @@ const CreateForum = ({setCreatePost, createPost}) => {
       <div className={styles.CreateForumContainer}>
         <button
           className="closeButton"
-          onClick={() => setCreatePost(false)}
+          onClick={() => setEditForum(false)}
         >
           X
         </button>
@@ -82,4 +83,4 @@ const CreateForum = ({setCreatePost, createPost}) => {
 }
 
 
-export default CreateForum
+export default UpdateForum

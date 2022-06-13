@@ -14,7 +14,7 @@ const EventList = ({ search }) => {
   const [eventDetails, setEventDetails] = useState(null);
   const authCtx = useContext(AuthContext);
   const { value, onChange } = useContext(DateContext);
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
 
   const { setEventModal, eventModal } = useContext(EventContext);
 
@@ -25,7 +25,7 @@ const EventList = ({ search }) => {
         setAllEvents(result.data);
         console.log(result);
       }).catch((e) => console.error(e));
-  }, [authCtx.token]);
+  }, [authCtx.token, setAllEvents, eventModal]);
 
 
   const handleSave = (newEntry) => {
@@ -43,20 +43,20 @@ const EventList = ({ search }) => {
   }
 
   //fn that returns journal entries with the specified tag
-  const handleFilter = (filterTag) => {
-    setFilter(true);
-    axios
-      .get("/events", {
-        headers: { authorization: "Bearer " + authCtx.token },
-      })
-      .then((result) => {
-        const entryList = result.data.filter((entry) =>
-          entry.tags.includes(filterTag)
-        );
-        setAllEvents([...entryList]);
-      })
-      .catch((e) => console.error(e));
-  };
+  // const handleFilter = (filterTag) => {
+  //   setFilter(true);
+  //   axios
+  //     .get("/events", {
+  //       headers: { authorization: "Bearer " + authCtx.token },
+  //     })
+  //     .then((result) => {
+  //       const entryList = result.data.filter((entry) =>
+  //         entry.tags.includes(filterTag)
+  //       );
+  //       setAllEvents([...entryList]);
+  //     })
+  //     .catch((e) => console.error(e));
+  // };
 
   const date = value.toString().split(" ").slice(1, 4).join(" ");
 
@@ -119,7 +119,6 @@ const EventList = ({ search }) => {
           allEvents?.map((e, id) => {
             return (
               <Event
-              onFilter={handleFilter}
               addModalEvent={addModalEvent} 
               event={e} 
               id={id} 

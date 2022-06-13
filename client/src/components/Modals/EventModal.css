@@ -85,4 +85,15 @@
   font-size: 1.02rem;
 }
 
+.event_info > .buttonContainer {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.event_info > .buttonContainer > button {
+  border: 3px solid var(--black);
+  margin-right: 1rem;
+}
+
 

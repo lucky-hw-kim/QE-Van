@@ -3,14 +3,14 @@ import ReactDom from "react-dom";
 import "./CreateEventModal.css";
 import axios from "../api/axios";
 import AuthContext from "../../Context/AuthProvider";
-const CreateEventModal = ({ setCreateEventModal}) => {
+const UpdateEventModal = ({  setEdit, edit, e}) => {
   const authCtx = useContext(AuthContext);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
-  const [location, setLocation] = useState("");
-  const [image, setImage] = useState(null);
-  const [link, setLink] = useState("");
+  const [title, setTitle] = useState(e.event_title);
+  const [description, setDescription] = useState(e.event_description);
+  const [date, setDate] = useState(e.event_date);
+  const [location, setLocation] = useState(e.event_location);
+  const [image, setImage] = useState(e.event_thumbnail);
+  const [link, setLink] = useState(e.event_link);
 
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -25,6 +25,7 @@ const CreateEventModal = ({ setCreateEventModal}) => {
   };
 
   const handleImageUpload = async(event) => {
+    event.preventDefault();
     if(event.target.files && event.target.files[0]){
       let img = event.target.files[0];
       console.log(img);
@@ -38,7 +39,7 @@ const CreateEventModal = ({ setCreateEventModal}) => {
     e.preventDefault();
 
     //creates a new object with the current state values
-    const newEvent = {
+    const updatedEvent = {
       userId: authCtx.userId,
       event_title: title,
       event_description: description,
@@ -51,31 +52,27 @@ const CreateEventModal = ({ setCreateEventModal}) => {
       const filename = Date.now() + image.name
       data.append("name", filename);
       data.append("file", image);
-      newEvent.event_thumbnail = filename;
-      console.log(newEvent)
+      updatedEvent.event_thumbnail = filename;
+      console.log(updatedEvent)
     
       try {
-        const result = await axios.post("/upload", data, {
-          headers: {
-            'Content-Type': "multipart/form-data"
-          },
-        })
-      }catch(err) {
+        const result = await axios.post("/upload", data)
+      } catch(err) {
         console.log(err);
       }
     }
-    handleSubmitForm(newEvent);
+    handleSubmitForm(updatedEvent);
   };
 
-  const handleSubmitForm = (newEvent) => {
-       axios.post("/event", newEvent, {
+  const handleSubmitForm = (updatedEvent) => {
+       axios.put(`/event/${e._id}`, updatedEvent, {
           headers: {
             // 'Content-Type': "multipart/form-data",
             authorization: "Bearer " + authCtx.token,
           },
         }).then (result => {
           console.log(result.data)
-          setCreateEventModal(false);
+          setEdit(false);
         }
         ).catch (err => { console.error(err);})
   }
@@ -86,11 +83,11 @@ const CreateEventModal = ({ setCreateEventModal}) => {
         <div className="modalContainer">
           <button
             className="closeButtonE"
-            onClick={() => setCreateEventModal(false)}
+            onClick={() => setEdit(false)}
           >
             X
           </button>
-          <h2 className="eventFormHeader">Create An Event</h2> 
+          <h2 className="eventFormHeader">Update An Event</h2> 
           <form
             className="createEventForm"
             onSubmit={handleEventSubmit}
@@ -150,4 +147,4 @@ const CreateEventModal = ({ setCreateEventModal}) => {
   );
 };
 
-export default CreateEventModal;
+export default UpdateEventModal;

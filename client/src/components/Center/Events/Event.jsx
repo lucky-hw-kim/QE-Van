@@ -39,7 +39,7 @@ const Event = ({event, id, addModalEvent, onFilter, onUpdate, onDelete}) => {
     }}
     >
     <div className={styles.imageContainer}>
-        <img src={event.event_thumbnail} alt="img" />
+        <img src={event.event_thumbnail ? process.env.REACT_APP_PUBLIC_FOLDER +'/'+ event.event_thumbnail : "https://placekitten.com/640/360"} alt="img" />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.date}>{eventDate} {eventTime}</div>

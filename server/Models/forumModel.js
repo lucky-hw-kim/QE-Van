@@ -14,7 +14,7 @@ const ForumSchema = mongoose.Schema(
     spotted_date: {
       type: Date, require: true
     },
-    spottted_location: {
+    spotted_location: {
       type: String, require: true
     },
     user_email: {

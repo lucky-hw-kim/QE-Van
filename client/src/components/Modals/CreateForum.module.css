@@ -69,7 +69,7 @@
   background-color: transparent;
   height: 5rem;
   margin-bottom: 1rem;
-  width: 32vw;
+  resize: vertical;
 }
 .saveButton {
   margin-top: 1rem;

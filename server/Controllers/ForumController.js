@@ -9,7 +9,7 @@ import UserModel from "../Models/userModel.js";
 export const getAllForums = async (req, res) => {
 
   try {
-    const forums = await ForumModel.find().sort({ updatedAt : 1 })
+    const forums = await ForumModel.find().sort({ updatedAt : -1 })
 
     res.status(200).json(forums)
     

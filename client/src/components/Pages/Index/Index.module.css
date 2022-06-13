@@ -1,0 +1,229 @@
+.bgContainer {
+  display: block;
+  background-color: var(--pink);
+  width: 100%;
+  height: 100vh;
+}
+
+.headingBanner{
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.headingBanner > img:nth-child(1) {
+ width: 47vw;
+ height: fit-content;
+ padding: 1.7rem;
+}
+
+
+.headingBanner > img:nth-child(2) {
+  width: 28vw;
+  height: fit-content;
+  padding: 1.7rem;
+ }
+ 
+ .body > img {
+  position: relative;
+  width: 20vw;
+  margin-left: 1.5rem;
+  z-index: 10;
+  margin-top: -0.6rem;
+ }
+
+ .boardContainer {
+   display: flex;
+   justify-content: center;
+   margin-left: 1.5rem;
+   margin-top: 1rem;
+ }
+
+ .board {
+   position:absolute;
+   width: 80vw;
+   height: 50vh;
+   border: 4px solid black;
+ }
+
+ .redBg{
+  background-color: var(--red);
+  transform: translate(-50px,-50px);
+ }
+ .blueBg{
+  background-color: var(--blue);
+  transform: translate(-30px,-30px);
+ }
+ .greenBg{
+  background-color: var(--green);
+  transform: translate(-10px,-10px);
+ }
+ .yellowBg{
+  background-color: var(--yellow);
+  transform: translate(10px,10px);
+  display: flex;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 3rem;
+  color: var(--peach);
+  width: 62%;
+}
+
+.textContainer > span:nth-child(2) {
+ text-shadow: 4px 4px 1px var(--red);
+ font-size: 2.8vw;
+ line-height: 4.2rem;
+ padding: 0 2rem;
+ margin-top: 1rem;
+}
+
+.textContainer > span:nth-child(2) > strong {
+  font-size: 3.7vw;
+  text-shadow: 4px 4px 1px var(--red);
+  color: var(--blue);
+}
+
+.buttonContainer {
+
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 7vh;
+
+}
+
+.enterBtn {
+  font-size: 2vw;
+  border: 4px solid var(--black);
+  padding:2rem;
+  border-radius: 1em;
+  background: var(--peach);
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+.enterBtn::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--grey);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--grey), 0 0.35em 0 0 var(--black);
+  transform: translate3d(0, 0.75em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+.enterBtn:hover {
+  background: var(--pink);
+  transform: translate(0, 0.375em);
+}
+
+.enterBtn:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+
+.enterBtn:active {
+  transform: translate(0em, 0.75em);
+}
+
+.enterBtn:active::before {
+  transform: translate3d(0, 0, -1em);
+
+  box-shadow: 0 0 0 2px var(--blac), 0 0.25em 0 0 var(--grey);
+}
+
+
+
+
+
+
+
+
+.queers {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 6vw;
+  /* Fallback: Set a background color. */
+  background-color: var(--pink);
+  
+  /* Create the gradient. */
+   background-image: linear-gradient(
+        45deg,
+        #CA4246 16.666%, 
+        #E16541 16.666%, 
+        #E16541 33.333%, 
+        #F18F43 33.333%, 
+        #F18F43 50%, 
+        #8B9862 50%, 
+        #8B9862 66.666%, 
+        #476098 66.666%, 
+        #476098 83.333%, 
+        #A7489B 83.333%);
+  
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+
+}
+
+.queers:hover{
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+
+
+
+.vLine {
+  border-left: 4px solid black;
+
+}

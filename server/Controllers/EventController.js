@@ -7,7 +7,7 @@ import UserModel from "../Models/userModel.js"
 export const getAllEvents = async (req, res) => {
 
   try {
-    const events = await EventModel.find().sort({ event_date : 1 })
+    const events = await EventModel.find().sort({ updatedAt : -1 })
 
     res.status(200).json(events)
   } catch (error) {
@@ -72,6 +72,7 @@ export const updateEvent = async (req, res) => {
 export const deleteEvent = async (req, res) => {
   const eventId = req.params.id
   const {userId} = req.body
+  console.log(req)
 
   const user = await UserModel.findById(userId)
   const event = await EventModel.findById(eventId)

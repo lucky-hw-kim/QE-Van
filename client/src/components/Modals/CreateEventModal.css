@@ -13,7 +13,7 @@
   box-shadow: 9px 9px var(--black);
   display: flex;
   justify-content: center;
-  
+
 }
 
 .eventFormHeader {
@@ -22,7 +22,7 @@
   color: var(--black);
   text-shadow: 3px 3px var(--white);
   background-color: var(--peach);
-  top: 3.3%;
+  top: 2.6%;
   width: fit-content;
   padding: 0 1rem 0.5rem 1rem;
   text-indent: none;
@@ -43,12 +43,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin-bottom: 4.5vh;
+  overflow: auto;
 }
 
-.location-input {
-  display: flex;
-  flex-direction: column;
-}
 
 .modalContainer > form > input {
   outline: none;
@@ -59,22 +56,16 @@
   margin-bottom: 1rem;
 }
 
-.modalContainer > form >textarea {
-  width: 29.2vw !important;
-}
-
-.location-search-input {
+.modalContainer > form > textarea {
+  outline: none;
   border: 3px solid var(--black);
   background-color: transparent;
-  font-family: inherit;
-  font-size: 0.5rem;
   width: 30vw;
-  height: 30px;
-  margin-left: 0.2em;
-  margin-bottom: 0.4rem;
-  align-self: center;
-  padding: 0px 10px;
+  height: 4rem;
+  margin-bottom: 1rem;
+  resize: vertical;
 }
+
 
 .location-search-input::placeholder{
 color: var(--black);
@@ -92,10 +83,10 @@ color: var(--black);
   position: absolute;
 }
 
-.saveButton2 {
+.saveButton3 {
   padding: 0.6rem 0;
   align-self: center;
-  width: 32vw;
+  width: 30.5vw;
   border: 3px solid var(--black);
 }
 
@@ -105,5 +96,13 @@ color: var(--black);
   margin-top: 2.2%;
   margin-right: 2%;
   border: 2px solid var(--black);
-  
 }
+
+.createEventForm > .image_input {
+  padding: 0.1rem;
+}
+
+.createEventForm > input[type="datetime-local"] {
+  padding: 0.1rem;
+}
+
