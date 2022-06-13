@@ -23,6 +23,9 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    profile_pic: {
+      type: String,
+    },
     refresToken:[String],
     roles: {
       User: {

@@ -84,11 +84,7 @@ const EventModal = ({ event, onDelete, onUpdate }) => {
         <div className="sub_eventModalContainer">
             <>
               <div className="title">{event.event_name}</div>
-              <img
-                src={event.event_thumbnail}
-                alt="thumbnail"
-                className="event_img"
-              />
+              <img className="event_img" src={event.event_thumbnail ? process.env.REACT_APP_PUBLIC_FOLDER +'/'+ event.event_thumbnail : "https://placekitten.com/640/360"} alt="img" />
               <div className="event_info">
                 <div className="description">{event.event_description}</div>
                 <div className="date">

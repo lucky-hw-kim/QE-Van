@@ -36,9 +36,10 @@
 }
 
 .event_img {
-  width: 32vw;
+  max-width: 32vw;
   /* border: 3px solid var(--black); */
   box-shadow: 9px 9px var(--black);
+  max-height:30vh;
 }
 
 .description {
