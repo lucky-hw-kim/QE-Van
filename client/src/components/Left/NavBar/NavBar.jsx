@@ -7,12 +7,12 @@ import AuthContext from '../../../Context/AuthProvider'
 import ProfileModal from '../../Modals/ProfileModal'
 import { EventContext } from '../../../App'
 
-const NavBar = ({logout}) => {
+const NavBar = ({logout, setProfileModal, profileModal}) => {
   const ctx = useContext(AuthContext);
   const {setCreateEventModal, createEventModal} = useContext(EventContext);
 
   const [savedEventModal, setSavedEventModal] = useState(false)
-  const [profileModal, setProfileModal] = useState(false)
+
   return (
     <>
       <div className={styles.NavBarContainer}>

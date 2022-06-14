@@ -16,7 +16,7 @@ const Profile = () => {
     ).catch ((error) => {
       console.log(error)
     })
-  }, [])
+  }, [authCtx.token])
 
 
   const pronouns = user.pronoun;

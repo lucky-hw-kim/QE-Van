@@ -18,12 +18,12 @@ const EventList = ({ search }) => {
 
   const { setEventModal, eventModal, createEventModal } = useContext(EventContext);
 
+
   useEffect(() => {
     axios.get("/event", {
         headers: { authorization: "Bearer " + authCtx.token }
       }).then((result) => {
         setAllEvents(result.data);
-        console.log(result);
       }).catch((e) => console.error(e));
   }, [authCtx.token, setAllEvents, eventModal, createEventModal]);
 
@@ -59,7 +59,8 @@ const EventList = ({ search }) => {
   // };
 
   const date = value.toString().split(" ").slice(1, 4).join(" ");
-
+  console.log(date.toUpperCase());
+  
 
   const addModalEvent = (e) => {
     setEventDetails(e);
@@ -68,7 +69,8 @@ const EventList = ({ search }) => {
   return (
     <div className={styles.EventListContainer}>
       {search
-        ? allEvents?.map((e, id) => {
+        ? 
+        (allEvents?.map((e, id) => {
             if (e.event_title.toLowerCase().includes(search.toLowerCase())) {
               return (
                 <Event
@@ -79,52 +81,34 @@ const EventList = ({ search }) => {
                 />
               );
             }
-          })
-        : allEvents?.map((e, id) => {
-            let eventDate = e.event_date
-              .toString()
-              .split(" ")
-              .slice(0, 3)
-              .join(" ");
-            if (date == eventDate) {
-              return (
-                <Event
-                  addModalEvent={addModalEvent}
-                  event={e}
-                  id={id}
-                  key={id}
-                />
-              );
-            }
-          })}
-      {value
-        ? allEvents?.map((e, id) => {
-            let eventDate = e.event_date
-              .toString()
-              .split(" ")
-              .slice(0, 3)
-              .join(" ");
-            if (date == eventDate) {
-              return (
-                <Event
-                  addModalEvent={addModalEvent}
-                  event={e}
-                  id={id}
-                  key={id}
-                />
-              );
-            }
-          })
-        : !value &&
+          })) 
+        : value 
+          ?
           allEvents?.map((e, id) => {
-            return (
-              <Event
-              addModalEvent={addModalEvent} 
-              event={e} 
-              id={id} 
-              key={id} />
-            );
-          })}
+            let eventDate = new Date(e.event_date).toString().split(" ").splice(1,3).join(" ")
+            
+            if (date == eventDate && e.event_title.toLowerCase().includes(search.toLowerCase())) {
+              return (
+                <Event
+                  addModalEvent={addModalEvent}
+                  event={e}
+                  id={id}
+                  key={id}
+                />
+              );
+            }
+          })
+          :
+        allEvents?.map((e, id) => {
+          return (
+            <Event
+            addModalEvent={addModalEvent} 
+            event={e} 
+            id={id} 
+            key={id} />
+          );
+        })}
+
       {eventModal ?
        <EventModal 
        event={eventDetails} 
@@ -137,3 +121,18 @@ const EventList = ({ search }) => {
 };
 
 export default EventList;
+
+
+// allEvents?.map((e, id) => {
+//   let eventDate = new Date(e.event_date).toString().split(" ").splice(1,3).join(" ")
+//   if (date == eventDate) {
+//     return (
+//       <Event
+//         addModalEvent={addModalEvent}
+//         event={e}
+//         id={id}
+//         key={id}
+//       />
+//     );
+//   }
+// })}

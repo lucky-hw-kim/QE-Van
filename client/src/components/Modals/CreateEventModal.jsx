@@ -50,7 +50,6 @@ const CreateEventModal = ({ setCreateEventModal }) => {
       data.append("name", filename);
       data.append("file", image);
       newEvent.event_thumbnail = filename;
-      console.log(newEvent);
 
       try {
         const result = await axios.post("/upload", data, {

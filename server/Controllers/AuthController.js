@@ -10,7 +10,7 @@ dotenv.config();
 
 //Generate jwt for user
 const generateJwt = (id, secretKey) => {
-  return jwt.sign({id}, secretKey,{ expiresIn: '2h'})
+  return jwt.sign({id}, secretKey,{ expiresIn: '4h'})
 }
 
 export const registerUser = async (req, res) => {

@@ -11,7 +11,7 @@ const DatePicker = () => {
 
   return (
     <div className="DatePickerContainer">
-      <Calendar onChange={onChange} value={value} />
+      <Calendar  onChange={onChange} />
     </div>
   )
 }

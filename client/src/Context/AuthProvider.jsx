@@ -35,7 +35,6 @@ export const AuthContextProvider = (props) => {
           window.localStorage.setItem('token', result.data.accessToken);
           window.localStorage.setItem('name', result.data.user.username);
           window.localStorage.setItem('userId', result.data.user._id);
-          window.localStorage.setItem('user', result.data.user);
        
           setToken(result.data.accessToken);
           setUserName(result.data.user.username);
@@ -68,7 +67,6 @@ export const AuthContextProvider = (props) => {
     localStorage.setItem('token', token);
     localStorage.setItem('name', userName);
     localStorage.setItem('userId', userId);
-    localStorage.setItem('user', user);
     setToken(token);
     setUserName(userName);
     setUserId(userId);

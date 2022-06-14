@@ -9,8 +9,6 @@ const SavedEvent = ({savedEventModal, setSavedEventModal}) => {
 
   const userId = window.localStorage.getItem('userId');
 
-  
-
   const OVERLAY_STYLES = {
     position: "fixed",
     top: 0,
@@ -25,9 +23,9 @@ const SavedEvent = ({savedEventModal, setSavedEventModal}) => {
 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
-      <div className={styles.eventsContainer}>
+      <div className="container">
       <div className={styles.sub_eventsContainer}>
-      <button className={styles.closeButton} onClick={() => setSavedEventModal(false)}>X</button>
+      <button className="closeButton" onClick={() => setSavedEventModal(false)}>X</button>
         <div className={styles.savedEventContainer}>
          <div className={styles.title}>
            SAVED EVENTS
@@ -35,7 +33,7 @@ const SavedEvent = ({savedEventModal, setSavedEventModal}) => {
          <div className={styles.eventList}>
            {EventData.map(e => {
              if(UserData[0].saved_events.includes(e.id)){
-            return <EventSaved e={e}/>
+            return <EventSaved e={e} key={e.id}/>
              }
            })}
           

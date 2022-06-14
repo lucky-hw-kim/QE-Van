@@ -38,8 +38,9 @@ input[type="file"]::-webkit-file-upload-button {
     display: flex;
     justify-content: center;
     --fs: 0.65rem;
-    width: 50vw;
-    max-height: 70vh;
+    max-width: 52vw;
+    min-width: 40vw;
+    max-height: 72vh;
     min-height: 38vh;
   }
   .subContainer {
@@ -58,34 +59,36 @@ input[type="file"]::-webkit-file-upload-button {
     color: var(--black);
     text-shadow: 3px 3px var(--white);
     background-color: var(--peach);
-    top: 2.6%;
+    margin-top: -6%;
     width: fit-content;
-    padding: 0 1rem 0.5rem 1rem;
+    padding: 0 1rem 0rem 1rem;
     text-indent: none;
     position: absolute;
     text-align: center;
-    left: 21.5%;
-    margin-bottom: 3rem;
   }
+
   .containerForm > input {
     border: 3px solid var(--black);
     background-color: transparent;
     font-family: inherit;
-    font-size: 0.5rem;
-    width: 31vw;
-    height: 30px;
-    align-self: center;
+    font-size: 0.8rem;
+    width: 33vw;
+    height: 40px;
     margin-bottom: 0.4rem;
     padding: 0px 10px;
-    
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerForm > label {
+    line-height: 2.2rem
   }
 
   .containerForm > textarea {
     border: 3px solid var(--black);
     background-color: transparent;
     font-family: inherit;
-    font-size: 0.5rem;
-    align-self: center;
+    font-size: 0.8rem;
     margin-bottom: 0.4rem;
     padding: 0px 10px;
     height: 60px;
@@ -93,8 +96,8 @@ input[type="file"]::-webkit-file-upload-button {
     resize:vertical;
     overflow: auto;
     outline: none;
-    width: 31vw;
-    
+    width: 33vw;
+
   }
 
   .closeButton {
@@ -106,14 +109,12 @@ input[type="file"]::-webkit-file-upload-button {
     color: var(---black);
   }
 
-
-  .containerForm > button {
-    border: 3px solid var(--black);
-    width: 32.8vw;
-  }
-
   .saveButton {
-    width: 34vw;
+    border: 3px solid var(--black);
+    width: 34.8vw;
+    margin-top: 1rem;
+    height: 5vh;
+    color: var(--black);
   }
   
 

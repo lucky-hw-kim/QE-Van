@@ -102,14 +102,14 @@ export const saveEvent = async (req, res) => {
     if(!event.saved_userId.includes(userId)) {
       await event.updateOne({$push : {saved_userId: userId}})
       await user.updateOne({$push : {saved_events: eventId}})
-      res.status(200).json("Event saved")
+      res.status(200).json(event)
     } else {
       await event.updateOne({$pull : {saved_userId: userId}})
       await user.updateOne({$pull : {saved_events: eventId}})
-      res.status(200).json("Event unsaved")
+      res.status(200).json(event)
     }
   } catch (err) {
-    res.status(500).json(error)
+    res.status(500).json(err)
   }
 }
 
@@ -126,11 +126,11 @@ export const attendingEvent = async (req, res) => {
     if(!event.attending_userId.includes(userId)) {
       await event.updateOne({$push: {attending_userId: userId}})
       await user.updateOne({$push : {attending_events: eventId}})
-      res.status(200).json("Event attending!")
+      res.status(200).json(event)
     } else {
       await event.updateOne({$pull: {attending_userId: userId}})
       await user.updateOne({$pull : {attending_events: eventId}})
-      res.status(200).json("Event not attending!")
+      res.status(200).json(event)
     }
   } catch (err) {
     res.status(500).json(error)

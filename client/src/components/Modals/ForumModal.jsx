@@ -102,15 +102,15 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
     <div style={OVERLAY_STYLES}>
       <div className="container">
           <button
-            className="closeButtonOne"
+            className="closeButton"
             onClick={() => setForumModal(false)}
           >
             X
           </button>
         <div className="subContainer">
           {!editForum ? (
-            <div className="eventModalBody">
-              <h2 className="containerHeader">ARE YOU...?</h2>
+              <>
+              <div className="containerHeader helloThere">Hello there!</div>
               <div className="title">{post.title}</div>
               <div className="description">{post.post_body}</div>
               <div className="location">WHERE: @ {post.spotted_location}</div>
@@ -139,7 +139,7 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                   </button>
                 </span>
               </div>
-            </div>
+              </>
           ) : (
             <>
               <div className="containerHeader">Edit Your Post</div>

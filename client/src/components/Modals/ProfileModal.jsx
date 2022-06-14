@@ -10,6 +10,7 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
   const [editProfile, setEditProfile] = useState(false);
   const [msg, setMsg] = useState("")
   const [state, setState] = useState({}) 
+  const authCtx = useContext(AuthContext);
   const OVERLAY_STYLES = {
     position: "fixed",
     top: 0,
@@ -27,18 +28,19 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
     axios.get(`user/${userId}`).then((res) => {
       setUser(res.data);
     });
-  }, [profileModal]);
+  }, [authCtx.token]);
 
   const pronouns = user.pronoun;
   const profilePic = user.profile_pic;
   console.log("User:", user.firstname)
 
   const initialState = {
-    firstname: "",
+    firstname: user.firstname,
     lastname: "",
     pronoun: pronouns ? pronouns : "",
     currentAdminStatus: "", 
-    password: user.password
+    password: user.password,
+    profile_pic: profilePic
   };
 
   const [updateUser, setUpdateUser] = useState(initialState);
@@ -46,8 +48,6 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
   const handleChange = (e) => {
     setUpdateUser({ ...updateUser, [e.target.name]: e.target.value });
   };
-
-
 
   const handleImageUpload = async (event) => {
     event.preventDefault();
@@ -87,6 +87,7 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
     } catch (error) {
       setMsg(error);
     }
+    setProfileModal(false)
     
   };
 
@@ -167,10 +168,10 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
                   type="file"
                   className={styles.profile_pic}
                   name="profile_pic"
-                  value={updateUser.profile_pic}
                   onChange={handleImageUpload}
+                  accept="image/*"
                 />
-               <button>Save</button>
+               <button className="saveButton">Save</button>
                 <br />
               </form>
             </div>
