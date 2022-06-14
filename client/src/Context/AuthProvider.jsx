@@ -20,6 +20,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(initialToken);
   const [userName, setUserName] = useState(initialName);
   const [userId, setUserId] = useState(initialId);
+  const [user, setUser] = useState("");
   const [errMsg, setErrMsg] = useState('');
 
 
@@ -34,9 +35,12 @@ export const AuthContextProvider = (props) => {
           window.localStorage.setItem('token', result.data.accessToken);
           window.localStorage.setItem('name', result.data.user.username);
           window.localStorage.setItem('userId', result.data.user._id);
+          window.localStorage.setItem('user', result.data.user);
+       
           setToken(result.data.accessToken);
           setUserName(result.data.user.username);
           setUserId(result.data.user._id);
+          setUser(result.data.user)
           navigate('/');
         }
       } catch (err) {
@@ -57,15 +61,18 @@ export const AuthContextProvider = (props) => {
     setToken(null);
     setUserName(null);
     setUserId(null);
+    setUser(null);
   };
 
   const registerHandler = (userName, token, userId) => {
     localStorage.setItem('token', token);
     localStorage.setItem('name', userName);
     localStorage.setItem('userId', userId);
+    localStorage.setItem('user', user);
     setToken(token);
     setUserName(userName);
     setUserId(userId);
+    setUser(user);
   };
 
   return <AuthContext.Provider
@@ -77,6 +84,7 @@ export const AuthContextProvider = (props) => {
       userName,
       userId,
       errMsg, 
+      user,
       setErrMsg
     } }>{ props.children }</AuthContext.Provider>;
 

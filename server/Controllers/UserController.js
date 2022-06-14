@@ -33,9 +33,9 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const id = req.params.id;
-  const {currentUserId, currentUserAdminStatus, password} = req.body;
+  const { currentUserAdminStatus, password} = req.body;
 
-  if(id === currentUserId || currentUserAdminStatus) {
+  if(id || currentUserAdminStatus) {
     try {
       if(password) {
         const salt = await bcrypt.genSalt(10);

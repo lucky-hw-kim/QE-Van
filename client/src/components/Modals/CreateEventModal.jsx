@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 import "./CreateEventModal.css";
 import axios from "../api/axios";
 import AuthContext from "../../Context/AuthProvider";
-const CreateEventModal = ({ setCreateEventModal}) => {
+const CreateEventModal = ({ setCreateEventModal }) => {
   const authCtx = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,13 +24,11 @@ const CreateEventModal = ({ setCreateEventModal}) => {
     height: "100vh",
   };
 
-  const handleImageUpload = async(event) => {
-    if(event.target.files && event.target.files[0]){
+  const handleImageUpload = async (event) => {
+    if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       console.log(img);
-      setImage(
-        img
-      );
+      setImage(img);
     }
   };
 
@@ -43,24 +41,24 @@ const CreateEventModal = ({ setCreateEventModal}) => {
       event_title: title,
       event_description: description,
       event_date: date,
-      event_location:location,
-      event_link: link
-    }
-    if(image) {
+      event_location: location,
+      event_link: link,
+    };
+    if (image) {
       const data = new FormData();
-      const filename = Date.now() + image.name
+      const filename = Date.now() + image.name;
       data.append("name", filename);
       data.append("file", image);
       newEvent.event_thumbnail = filename;
-      console.log(newEvent)
-    
+      console.log(newEvent);
+
       try {
         const result = await axios.post("/upload", data, {
           headers: {
-            'Content-Type': "multipart/form-data"
+            "Content-Type": "multipart/form-data",
           },
-        })
-      }catch(err) {
+        });
+      } catch (err) {
         console.log(err);
       }
     }
@@ -68,31 +66,35 @@ const CreateEventModal = ({ setCreateEventModal}) => {
   };
 
   const handleSubmitForm = (newEvent) => {
-       axios.post("/event", newEvent, {
-          headers: {
-            // 'Content-Type': "multipart/form-data",
-            authorization: "Bearer " + authCtx.token,
-          },
-        }).then (result => {
-          console.log(result.data)
-          setCreateEventModal(false);
-        }
-        ).catch (err => { console.error(err);})
-  }
- 
+    axios
+      .post("/event", newEvent, {
+        headers: {
+          // 'Content-Type': "multipart/form-data",
+          authorization: "Bearer " + authCtx.token,
+        },
+      })
+      .then((result) => {
+        console.log(result.data);
+        setCreateEventModal(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
-      <div className="createEventContainer">
-        <div className="modalContainer">
-          <button
-            className="closeButtonE"
-            onClick={() => setCreateEventModal(false)}
-          >
-            X
-          </button>
-          <h2 className="eventFormHeader">Create An Event</h2> 
+      <div className="container">
+        <button
+          className="closeButton"
+          onClick={() => setCreateEventModal(false)}
+        >
+          X
+        </button>
+        <div className="subContainer">
+          <h2 className="containerHeader">Create An Event</h2>
           <form
-            className="createEventForm"
+            className="containerForm"
             onSubmit={handleEventSubmit}
             encType="multipart/form-data"
           >
@@ -139,7 +141,7 @@ const CreateEventModal = ({ setCreateEventModal}) => {
               onChange={(event) => setDate(event.target.value)}
             />
 
-            <button type="submit" className="saveButton3">
+            <button type="submit" className="saveButton">
               SAVE
             </button>
           </form>

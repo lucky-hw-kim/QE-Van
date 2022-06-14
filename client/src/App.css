@@ -11,6 +11,16 @@
  
 }
 
+input[type="file"]::-webkit-file-upload-button {
+  background: transparent;
+  font-family: inherit;
+  margin-top: 2.2%;
+  margin-right: 2%;
+  border: 2px solid var(--black);
+}
+
+
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -18,8 +28,95 @@
 
 @media (min-width: 1281px) {
   .container {
-    --fs: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--peach);
+    padding: 3.5% 5% 6% 5%;
+    box-shadow: 9px 9px var(--black);
+    display: flex;
+    justify-content: center;
+    --fs: 0.65rem;
+    width: 50vw;
+    max-height: 70vh;
+    min-height: 38vh;
   }
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid var(--black);
+    padding: 2rem;
+    max-height: 97%;
+    width: 97%;
+    color: white;
+  }
+
+  .containerHeader {
+    font-size: 1.4vw;
+    color: var(--black);
+    text-shadow: 3px 3px var(--white);
+    background-color: var(--peach);
+    top: 2.6%;
+    width: fit-content;
+    padding: 0 1rem 0.5rem 1rem;
+    text-indent: none;
+    position: absolute;
+    text-align: center;
+    left: 21.5%;
+    margin-bottom: 3rem;
+  }
+  .containerForm > input {
+    border: 3px solid var(--black);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 0.5rem;
+    width: 31vw;
+    height: 30px;
+    align-self: center;
+    margin-bottom: 0.4rem;
+    padding: 0px 10px;
+    
+  }
+
+  .containerForm > textarea {
+    border: 3px solid var(--black);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 0.5rem;
+    align-self: center;
+    margin-bottom: 0.4rem;
+    padding: 0px 10px;
+    height: 60px;
+    line-height: 1rem;
+    resize:vertical;
+    overflow: auto;
+    outline: none;
+    width: 31vw;
+    
+  }
+
+  .closeButton {
+    font-size: 1.5vw;
+    align-self: flex-end;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    color: var(---black);
+  }
+
+
+  .containerForm > button {
+    border: 3px solid var(--black);
+    width: 32.8vw;
+  }
+
+  .saveButton {
+    width: 34vw;
+  }
+  
+
 }
 
 /* 

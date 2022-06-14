@@ -16,7 +16,7 @@ const EventList = ({ search }) => {
   const { value, onChange } = useContext(DateContext);
   // const [filter, setFilter] = useState(false);
 
-  const { setEventModal, eventModal } = useContext(EventContext);
+  const { setEventModal, eventModal, createEventModal } = useContext(EventContext);
 
   useEffect(() => {
     axios.get("/event", {
@@ -25,7 +25,7 @@ const EventList = ({ search }) => {
         setAllEvents(result.data);
         console.log(result);
       }).catch((e) => console.error(e));
-  }, [authCtx.token, setAllEvents, eventModal]);
+  }, [authCtx.token, setAllEvents, eventModal, createEventModal]);
 
 
   const handleSave = (newEntry) => {

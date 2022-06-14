@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDom from "react-dom";
 import styles from './SavedEvent.module.css'
 import { EventData } from '../../Data/EventData';
 import {UserData} from '../../Data/UserData';
 import EventSaved from './ListEvents/EventSaved';
 
-
 const SavedEvent = ({savedEventModal, setSavedEventModal}) => {
+
+  const userId = window.localStorage.getItem('userId');
+
+  
+
   const OVERLAY_STYLES = {
     position: "fixed",
     top: 0,

@@ -5,10 +5,12 @@ import SavedEvent from '../../Modals/SavedEvent'
 import { NavLink } from 'react-router-dom'
 import AuthContext from '../../../Context/AuthProvider'
 import ProfileModal from '../../Modals/ProfileModal'
+import { EventContext } from '../../../App'
 
 const NavBar = ({logout}) => {
   const ctx = useContext(AuthContext);
-  const [createEventModal, setCreateEventModal] = useState(false)
+  const {setCreateEventModal, createEventModal} = useContext(EventContext);
+
   const [savedEventModal, setSavedEventModal] = useState(false)
   const [profileModal, setProfileModal] = useState(false)
   return (
@@ -28,7 +30,7 @@ const NavBar = ({logout}) => {
         savedEventModal && <SavedEvent savedEventModal ={savedEventModal} setSavedEventModal={setSavedEventModal}/>
       }
       {
-        profileModal && <ProfileModal profileModal ={profileModal} setProfileModal={setProfileModal}/>
+        profileModal && <ProfileModal profileModal ={profileModal} setProfileModal={setProfileModal} />
       }
     </>
   )

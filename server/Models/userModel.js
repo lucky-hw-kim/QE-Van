@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema(
       default: false,
     },
     profile_pic: {
-      type: String,
+      type: String
     },
     refresToken:[String],
     roles: {
@@ -34,7 +34,6 @@ const UserSchema = mongoose.Schema(
       },
       Admin: Number
     },
-    profilePicture: String,
     saved_events: [],
     attending_events: []    
   },

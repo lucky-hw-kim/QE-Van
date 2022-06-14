@@ -50,18 +50,18 @@ const CreateForum = ({setCreatePost, createPost}) => {
 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
-      <div className={styles.CreateForumContainer}>
+      <div className="container">
         <button
           className="closeButton"
           onClick={() => setCreatePost(false)}
         >
           X
         </button>
-        <div className={styles.sub_eventModalContainer}>
-        <div className={styles.header}>
+        <div className="subContainer">
+        <div className="containerHeader">
           I spotted you!
         </div>
-        <form onSubmit={handleForumSubmit}>
+        <form className="containerForm" onSubmit={handleForumSubmit}>
           <label htmlfor="post_title">Title: </label>
           <input className={styles.title} name="post_title"
           value={title} onChange={(event) => setTitle(event.target.value)}/>

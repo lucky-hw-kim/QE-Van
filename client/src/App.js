@@ -27,12 +27,13 @@ const RequireAuth = () => {
 function App() {
   const [eventModal, setEventModal] = useState(false);
   const [forumModal, setForumModal] = useState(false);
+  const [createEventModal, setCreateEventModal] = useState(false)
 
   return (
 
     <div className="App">
       <AuthContextProvider>
-        <EventContext.Provider value={{eventModal, setEventModal, forumModal, setForumModal}} >
+        <EventContext.Provider value={{eventModal, setEventModal, forumModal, setForumModal, setCreateEventModal, createEventModal}} >
           <Routes>
             {/* Public Routes */}
             <Route path='home' element={<Index/>}/>
