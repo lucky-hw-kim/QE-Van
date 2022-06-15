@@ -1,36 +1,10 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
 .DatePickerContainer {
-  width: 31vw;
-  max-height: 37vh;
-  display: flex;
   justify-content: center;
-  color: var(--black);
-  padding: 1vh;
-  margin-top: 1rem;
-}
-
-
-.react-calendar {
-  padding: 0 0.5rem 0.5rem 0.5rem;
-  max-width: 28vw;
-  max-height: 36vh;
-  text-align: center;
-  border: 3px solid var(--black);
-  box-shadow: 9px 9px var(--black); 
-}
-
-div.react-calendar__navigation {
-  font-size: 1.02vw;
-  margin: 1.3vw 1.3vw 1vw 1vw; 
-  color: var(--black);
-  border: 3px solid var(--black);
-  padding: 0.15rem;
-  
-  
-}
-
-abbr {
-  font-size: 1.1vw; 
-
+  align-self: center;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -40,5 +14,159 @@ abbr {
 .react-calendar__tile--range {
   color: var(--blue);
   text-shadow: 1.5px 1.5px var(--pink);
+}
+
+@media (min-width: 1281px) {
+   
+
+.DatePickerContainer {
+  width: 30vw;
+  max-height: fit-content;
+  display: flex;
+  color: var(--black);
+  padding: 1vh;
+  margin-top: 1rem;
+}
+
+.react-calendar {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  max-width: 28vw;
+  max-height: fit-content;
+  text-align: center;
+  border: 3px solid var(--black);
+  box-shadow: 9px 9px var(--black); 
+}
+
+div.react-calendar__navigation {
+  font-size: 1.3vw;
+  margin: 1.3vw 1.3vw 1vw 1vw; 
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 0.5rem;
+
+}
+
+abbr {
+  font-size: 1.12vw; 
+  line-height: 1.7rem;
+
+}
+
+
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .DatePickerContainer {
+    width: 29vw;
+    display: flex;
+    color: var(--black);
+    padding: 0.8vh;
+    margin-top: 1rem;
+  }
+  
+  .react-calendar {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    max-width: 28vw;
+    max-height: 38vh;
+    text-align: center;
+    border: 3px solid var(--black);
+    box-shadow: 9px 9px var(--black); 
+  }
+  
+  div.react-calendar__navigation {
+    font-size: 1.1vw;
+    margin: 1vw; 
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 0.3rem;
+  
+  }
+  
+  abbr {
+    font-size: 1vw; 
+    line-height: 1rem;
+  
+  }
+  
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .DatePickerContainer {
+    width: 29vw;
+    height: 36vh;
+    display: flex;
+    color: var(--black);
+    padding: 0.8vh;
+    margin-top: 1rem;
+  }
+  
+  .react-calendar {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    max-width: 28vw;
+    height: 38vh;
+    text-align: center;
+    border: 3px solid var(--black);
+    box-shadow: 9px 9px var(--black); 
+  }
+  
+  div.react-calendar__navigation {
+    font-size: 1.1vw;
+    margin: 1vw; 
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 0.3rem;
+  
+  }
+  
+  abbr {
+    font-size: 1vw; 
+    line-height: 1rem;
+  
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .container {
+    --fs: 28px;
+  }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  .container {
+    --fs: 22px;
+  }
+  
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
 
 }

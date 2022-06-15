@@ -1,43 +1,196 @@
-.ForumListContainer {
-  border: 3px solid var(--black);
-  display: flex;
-  flex-direction: column;
-  color: var(--black);
-  box-shadow: 9px 9px var(--black); 
-  margin: 2.2vw 1.1vw;
-  max-height: 50vh;
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .ForumListContainer {
+    border: 3px solid var(--black);
+    display: flex;
+    width: 29vw;
+    flex-direction: column;
+    color: var(--black);
+    box-shadow: 9px 9px var(--black); 
+    margin: 1.7vw 1.1vw;
+    max-height: 45vh;
+    align-self: center;
+
+  }
+  
+  .ForumList_header {
+    align-self: center;
+    padding: 1vw;
+    font-size: 1.7vw;
+    color: var(--white);
+    text-shadow: 2px 2px var(--pink);
+  }
+  
+  .hrline {
+    border-bottom: 3px solid var(--black);
+  }
+  
+  .ForumList_body {
+    align-self: center;
+    font-size: 0.57rem;
+    padding: 0.5rem;
+    max-height: 45vh;
+    width: 27vw;
+    overflow: scroll;
+  }
+  
+  .ForumListContainer > .forumListBtn { 
+    align-self: center;
+    width: 27vw;
+    border: 3px solid var(--black);
+    font-size: 0.9vw;
+    margin-bottom: 0.5rem;
+    padding: 0.7rem 0;
+  }
+  
+  .ForumListContainer > .forumListBtn:hover{
+    transition: all 0.2s ease-in-out 0s;
+    transform: scale(1.03, 1.03);
+  }
+  
+  
 }
 
-.ForumList_header {
-  align-self: center;
-  padding: 1vw;
-  font-size: 1.7vw;
-  color: var(--white);
-  text-shadow: 2px 2px var(--pink);
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .ForumListContainer {
+    border: 3px solid var(--black);
+    display: flex;
+    width: 28.6vw;
+    flex-direction: column;
+    color: var(--black);
+    box-shadow: 9px 9px var(--black); 
+    margin: 2vw 1vw;
+    align-self: center;
+  }
+  
+  .ForumList_header {
+    align-self: center;
+    padding: 1vw;
+    font-size: 1.7vw;
+    color: var(--white);
+    text-shadow: 2px 2px var(--pink);
+  }
+  
+  .hrline {
+    border-bottom: 3px solid var(--black);
+  }
+  
+  .ForumList_body {
+    align-self: center;
+    font-size: 0.57rem;
+    padding: 0.4rem;
+    width: 27vw;
+    overflow: scroll;
+  }
+  
+  .ForumListContainer > .forumListBtn { 
+    align-self: center;
+    width: 27vw;
+    border: 3px solid var(--black);
+    font-size: 0.9vw;
+    margin-bottom: 0.5rem;
+    padding: 0.7rem 0;
+  }
+  
+  .ForumListContainer > .forumListBtn:hover{
+    transition: all 0.2s ease-in-out 0s;
+    transform: scale(1.03, 1.03);
+  }
+  
+  
 }
 
-.hrline {
-  border-bottom: 3px solid var(--black);
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ForumListContainer {
+    border: 3px solid var(--black);
+    display: flex;
+    width: 28.6vw;
+    flex-direction: column;
+    color: var(--black);
+    box-shadow: 9px 9px var(--black); 
+    margin: 2vw 1vw;
+    max-height: 52.5vh;
+    align-self: center;
+  }
+  
+  .ForumList_header {
+    align-self: center;
+    padding: 1vw;
+    font-size: 1.7vw;
+    color: var(--white);
+    text-shadow: 2px 2px var(--pink);
+  }
+  
+  .hrline {
+    border-bottom: 3px solid var(--black);
+  }
+  
+  .ForumList_body {
+    align-self: center;
+    font-size: 0.57rem;
+    padding: 0.4rem;
+    max-height: 40vh;
+    width: 27vw;
+    overflow: scroll;
+  }
+  
+  .ForumListContainer > .forumListBtn { 
+    align-self: center;
+    width: 27vw;
+    border: 3px solid var(--black);
+    font-size: 0.9vw;
+    margin-bottom: 0.5rem;
+    padding: 0.7rem 0;
+  }
+  
+  .ForumListContainer > .forumListBtn:hover{
+    transition: all 0.2s ease-in-out 0s;
+    transform: scale(1.03, 1.03);
+  }
+  
 }
 
-.ForumList_body {
-  align-self: center;
-  font-size: 0.57rem;
-  padding: 0.4rem;
-  max-height: 40vh;
-  max-width: 27.88vw;
-  overflow: scroll;
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
 }
 
-.ForumListContainer > .forumListBtn { 
-  align-self: center;
-  width: 95%;
-  border: 3px solid var(--black);
-  font-size: 0.9vw;
-  margin-bottom: 0.5rem;
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  
 }
 
-.ForumListContainer > .forumListBtn:hover{
-  transition: all 0.2s ease-in-out 0s;
-  transform: scale(1.03, 1.03);
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+
+  
 }

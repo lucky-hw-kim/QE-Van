@@ -16,7 +16,6 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
   const[title, setTitle] = useState(post.post_title);
   const[description, setDescription] = useState(post.post_description);
   const[date, setDate] = useState(post.spotted_date);
-  const[authUser, setAuthUser] = useState(false);
   const[location, setLocation] = useState(post.spotted_location);
 
   const token = localStorage.getItem('token')
@@ -112,12 +111,12 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
           </button>
         <div className="subContainer">
           {!editForum ? (
-              <>
+              <div className="forumContainer">
               <div className="containerHeader helloThere">Hello there!</div>
-              <div className="title">{post.title}</div>
-              <div className="description">{post.post_body}</div>
-              <div className="location">WHERE: @ {post.spotted_location}</div>
-              <div className="date">
+              <div className="forum_title">{post.post_title}</div>
+              <div className="forum_description">{post.post_description}</div>
+              <div className="forum_location">WHERE: @ {post.spotted_location}</div>
+              <div className="forum_date">
                 WHEN:{spottedDate} {spottedTime}
               </div>
               <div className="user_name">By {user.firstname}</div>
@@ -128,7 +127,7 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                   <button
                     onClick={handleDeleteForum}
                     type="button"
-                    className="deleteButton btn"
+                    className="deleteButton saveButton"
                   >
                     Delete
                   </button>
@@ -139,14 +138,14 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                       setEditForum(true);
                     }}
                     type="button"
-                    className="editButton btn"
+                    className="editButton saveButton"
                   >
                     Edit
                   </button>
                   : ""}
                 </span>
               </div>
-              </>
+              </div>
           ) : (
             <>
               <div className="containerHeader">Edit Your Post</div>

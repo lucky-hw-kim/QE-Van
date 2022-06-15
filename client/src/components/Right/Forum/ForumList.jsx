@@ -23,7 +23,7 @@ const ForumList = () => {
 
   const handleDeletePost = (id) => {
     // setForumModal(false);
-    setAllforums(allForums.filter((post) => post.id !== id))
+    setAllforums(allForums.filter((post) => post._id !== id))
   }
 
   const handleEditPost = (id,updatedEntry) => {

@@ -115,7 +115,7 @@ const EventModal = ({ event, onDelete, onUpdate }) => {
              authorization: "Bearer " + authCtx.token,
            },
          }).then (result => {
-           console.log(result.data)
+
            setEdit(false);
          }
          ).catch (err => { console.error(err);})

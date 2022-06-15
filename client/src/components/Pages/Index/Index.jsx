@@ -5,6 +5,7 @@ import rainbow from "../../../assets/rainbow.png";
 import cloud from "../../../assets/cloud@4x.png";
 import { NavLink } from "react-router-dom";
 
+
 const Index = () => {
   return (
     <div className={styles.bgContainer}>
@@ -23,7 +24,6 @@ const Index = () => {
               <div className={styles.textContainer}>
                 <span className={styles.queers}>Queers</span>
                 <span className={styles.just}>Are you looking for some <strong>fun</strong> events?</span>
-
               </div>
               <div className={styles.vLine}/>
               <div className={styles.buttonContainer}>

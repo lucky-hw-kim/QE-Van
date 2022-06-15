@@ -1,32 +1,149 @@
-.CenterContainer{
-    height: 100%;
-    width: 100%;
-    background-color: var(--blue);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    .CenterContainer{
+        height: 100vh;
+        width: 100%;
+        background-color: var(--blue);
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .pinkbox {
+        position: fixed;
+        width: 20%;
+        height: 30%;
+        margin-right: 20px;
+        background-color: var(--pink);
+        align-self: flex-end;
+        z-index: 1;
+    }
+    
+    .SearchBar{
+        position: relative;
+        margin-top: 5px;
+        z-index: 2;
+    }
+    
+    .redbox {
+        bottom:0;
+        position: absolute;
+        width: 20%;
+        height: 17%;
+        background-color: var(--red);
+    }
+    
+  
 }
 
-.pinkbox {
-    position: fixed;
-    width: 20%;
-    height: 30%;
-    margin-right: 20px;
-    background-color: var(--pink);
-    align-self: flex-end;
-    z-index: 1;
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .CenterContainer{
+        height: 100vh;
+        width: 100%;
+        background-color: var(--blue);
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .pinkbox {
+        position: fixed;
+        width: 20%;
+        height: 30%;
+        margin-right: 20px;
+        background-color: var(--pink);
+        align-self: flex-end;
+        z-index: 1;
+    }
+    
+    .SearchBar{
+        position: relative;
+        margin-top: 5px;
+        z-index: 2;
+    }
+    
+    .redbox {
+        bottom:0;
+        position: absolute;
+        width: 20%;
+        height: 17%;
+        background-color: var(--red);
+    }
+    
+  
 }
 
-.SearchBar{
-    position: relative;
-    margin-top: 5px;
-    z-index: 2;
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .CenterContainer{
+        height: 100vh;
+        width: 100%;
+        background-color: var(--blue);
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .pinkbox {
+        position: fixed;
+        width: 20%;
+        height: 30%;
+        margin-right: 20px;
+        background-color: var(--pink);
+        align-self: flex-end;
+        z-index: 1;
+    }
+    
+    .SearchBar{
+        position: relative;
+        margin-top: 5px;
+        z-index: 2;
+    }
+    
+
+    
 }
 
-.greenbox {
-    bottom:0;
-    position: fixed;
-    width: 20%;
-    height: 17%;
-    background-color: var(--red);
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+
+  
 }

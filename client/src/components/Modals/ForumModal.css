@@ -1,51 +1,158 @@
 
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
 
-.btn {
-  border: 3px solid var(--black);
-	box-sizing: border-box;
-	color: var(--black);
-	cursor: pointer;
-	display: inline-block;
-	margin: 0.7rem;
-	min-width: 100px;
-	padding: .5rem;
-	text-transform: uppercase;
-	width: auto;
-  margin-bottom: -20px;
+@media (min-width: 1281px) {
+  .forumContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-align: center;
+    font-size: 0.7rem;
+  }
+
+  .forum_title {
+    font-size: 1rem;
+    margin: 0.7rem 0;
+
+  }
+
+  .forum_description{
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .editForm > .saveButton:hover {
+    transition: all 0.2s ease-in-out 0s;
+    transform: scale(1.05, 1.05);
+  }
+  .eventModalBody {
+    line-height: 1.2rem;
+  }
+  
+  .eventModalBody > .title {
+    line-height: 1.5rem;
+  }
+  
+  .eventModalBody > div >.spotted_date {
+   margin-bottom: 10px;
+  
+  }
+  
+  
+  .eventModalBody > div {
+    text-align:  center;
+    margin-bottom: 20px;
+  }
+  
+  .eventModalBody > .link {
+    left:auto;
+    right:auto;
+    text-align: center;
+  }
+   .helloThere {
+     align-self: center;
+   }
+  
 }
 
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
 
-.editForm > .saveButton:hover {
-  transition: all 0.2s ease-in-out 0s;
-  transform: scale(1.05, 1.05);
+@media (min-width: 1024px) and (max-width: 1280px) {
+
+
+  .btn {
+    border: 3px solid var(--black);
+    box-sizing: border-box;
+    color: var(--black);
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.7rem;
+    min-width: 100px;
+    padding: .5rem;
+    text-transform: uppercase;
+    width: auto;
+    margin-bottom: -20px;
+  }
+  
+  
+  .editForm > .saveButton:hover {
+    transition: all 0.2s ease-in-out 0s;
+    transform: scale(1.05, 1.05);
+  }
+  .eventModalBody {
+    line-height: 1.2rem;
+  }
+  
+  .eventModalBody > .title {
+    line-height: 1.5rem;
+  }
+  
+  .eventModalBody > div >.spotted_date {
+   margin-bottom: 10px;
+  
+  }
+  
+  
+  .eventModalBody > div {
+    text-align:  center;
+    margin-bottom: 20px;
+  }
+  
+  .eventModalBody > .link {
+    left:auto;
+    right:auto;
+    text-align:  center;
+  }
+  
+  
+  .helloThere {
+    margin-top: -7%;
+  }
+  
+  
 }
-.eventModalBody {
-  line-height: 1.2rem;
-}
 
-.eventModalBody > .title {
-  line-height: 1.5rem;
-}
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
 
-.eventModalBody > div >.spotted_date {
- margin-bottom: 10px;
+@media (min-width: 768px) and (max-width: 1024px) {
 
 }
 
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
 
-.eventModalBody > div {
-  text-align:  center;
-  margin-bottom: 20px;
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
 }
 
-.eventModalBody > .link {
-  left:auto;
-  right:auto;
-  text-align:  center;
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  
 }
 
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
 
-.helloThere {
-  margin-top: -7%;
+@media (min-width: 320px) and (max-width: 480px) {
+  
+
+  
 }
-

@@ -18,17 +18,18 @@ const SavedEvent = ({ savedEventModal, setSavedEventModal }) => {
     axios
       .get(`/user/${userId}`)
       .then((response) => {
-        response.data.saved_events.map((event) => {
+        response.data.saved_events?.map((event) => {
           axios
             .get(`/event/${event}`, {
               headers: { authorization: "Bearer " + token },
             })
             .then((result) => {
+             
               setSavedEvents((prev) => [...prev, result.data]);
             })
             .catch((e) => console.error(e));
         });
-        response.data.attending_events.map((event) => {
+        response.data.attending_events?.map((event) => {
           axios
             .get(`/event/${event}`, {
               headers: { authorization: "Bearer " + token },
@@ -71,16 +72,16 @@ const SavedEvent = ({ savedEventModal, setSavedEventModal }) => {
           <div className={styles.savedEventContainer}>
             <div className={styles.title}>SAVED EVENTS</div>
             <div className={styles.eventList}>
-              {savedEvents.map((e) => {
-                return <EventSaved e={e} key={e._id} />;
+              {savedEvents.map((e, i) => {
+                return <EventSaved e={e} key={i} />;
               })}
             </div>
           </div>
           <div className={styles.attendingEventContainer}>
             <div className={styles.title}>ATTENDING EVENTS</div>
             <div className={styles.eventList}>
-              {attendEvents.map((e) => {
-                return <EventSaved e={e} key={e._id} />;
+              {attendEvents.map((e, i) => {
+                return <EventSaved e={e} key={i} />;
               })}
             </div>
           </div>

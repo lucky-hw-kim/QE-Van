@@ -15,7 +15,7 @@ const Center = () => {
           <SearchBar search={search} setSearch={setSearch}  />
           <EventList search={search} />
         </div>
-        <div className={styles.greenbox}/>
+        <div className={styles.redbox}/>
       </div>
 
   )
