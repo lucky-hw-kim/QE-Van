@@ -5,7 +5,6 @@ import './Login.css'
 
 const Login = () => {
     const ctx = useContext(AuthContext)
-
    
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -27,10 +26,8 @@ const Login = () => {
       //Form submit handler displays error if invalid email/password or navigates to homepage on succeesful login
     const handleSubmit = (e) => {
         e.preventDefault();
-
         ctx.onLogin(user, pwd);
-
-        }
+    }
    
 
     return (
@@ -49,7 +46,6 @@ const Login = () => {
                             value={user}
                             required
                         />
-
                         <label htmlFor="password">Password:</label>
                         <input
                             type="password"
