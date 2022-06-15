@@ -1,6 +1,7 @@
 import express from 'express'
 import { createForum, getAllForums, deleteForum, getForum, updateForum } from "../Controllers/ForumController.js";
 
+// Forum Routes
 const router = express.Router();
 
 router.get('/:id', getForum)

@@ -5,7 +5,6 @@ import UserModel from "../Models/userModel.js";
 
 
 //Get All forum
-
 export const getAllForums = async (req, res) => {
 
   try {

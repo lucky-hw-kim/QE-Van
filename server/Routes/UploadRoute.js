@@ -1,6 +1,7 @@
 import multer from "multer"
 import express from "express"
 
+// Image upload routes & controller
 const router = express.Router()
 
 const storage = multer.diskStorage({

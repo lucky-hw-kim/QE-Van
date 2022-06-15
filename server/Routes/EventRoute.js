@@ -3,7 +3,7 @@ import { attendingEvent, createEvent, deleteEvent, getAllEvents, getEvent, saveE
 
 
 
-
+// Event routes
 const router = express.Router();
 
 router.get('/:id', getEvent)

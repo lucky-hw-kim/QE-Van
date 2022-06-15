@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
 
-
 dotenv.config();
 // Register User
 
@@ -47,7 +46,7 @@ export const registerUser = async (req, res) => {
 };
 
 // login user
-// !!!!!!!!!!
+
 export const loginUser = async (req, res) => {
   const {username, password} = req.body
 

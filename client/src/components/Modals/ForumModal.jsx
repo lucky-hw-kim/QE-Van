@@ -117,11 +117,11 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
               <div className="containerHeader helloThere">Hello there!</div>
               <div className="forum_title">{post.post_title}</div>
               <div className="forum_description">{post.post_description}</div>
-              <div className="forum_location">WHERE: @ {post.spotted_location}</div>
+              <div className="forum_location">WHERE: @{post.spotted_location}</div>
               <div className="forum_date">
                 WHEN:{spottedDate} {spottedTime}
               </div>
-              <div className="user_name">By {user.firstname}</div>
+              <div className="user_name">BY {user.firstname}</div>
 
               <div>
                 <span>

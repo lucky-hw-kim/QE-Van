@@ -5,13 +5,10 @@ import AuthRoute from "./Routes/AuthRoute.js";
 import UserRoute from "./Routes/UserRoute.js";
 import EventRoute from "./Routes/EventRoute.js";
 import ForumRoute from "./Routes/ForumRoute.js";
-import LogoutRoute from "./Routes/LogoutRoute.js";
-import RefreshRoute from "./Routes/RefreshRoute.js";
 import UploadRoute from "./Routes/UploadRoute.js";
 import verifyJWT from "./middleware/verifyJWT.js";
 import cors from "cors";
-import cookieParser from "cookie-parser";
-import path from "path";
+
 const corsOptions = {
   origin: "*",
   credentials: true,
@@ -31,20 +28,21 @@ app.use(express.urlencoded({ limit: "30mb", extened: true }));
 dotenv.config();
 
 //middleware for cookies
-// app.use(cookieParser());
 
 // Usage of routes
 
-app.use("/logout", LogoutRoute);
 app.use("/auth", AuthRoute);
 app.use("/user", UserRoute);
-app.use("/refresh", RefreshRoute);
 app.use("/upload", UploadRoute);
+
+// Authentication required routes
 
 app.use(verifyJWT);
 app.use("/event", EventRoute);
 app.use("/forum", ForumRoute);
 
+
+// Connect MongoDb 
 
 mongoose
   .connect(process.env.MONGO_DB, {
@@ -52,7 +50,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(process.env.PORT, () =>
+    app.listen(process.env.PORT || 8080, () =>
       console.log(`Listening on ${process.env.PORT}`)
     )
   )
