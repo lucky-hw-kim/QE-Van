@@ -62,16 +62,16 @@ const CreateForum = ({setCreatePost, createPost}) => {
           I spotted you!
         </div>
         <form className="containerForm" onSubmit={handleForumSubmit}>
-          <label htmlfor="post_title">Title: </label>
+          <label htmlFor="post_title">Title: </label>
           <input className={styles.title} name="post_title"
           value={title} onChange={(event) => setTitle(event.target.value)}/>
-          <label htmlfor="post_description">Description:</label>
+          <label htmlFor="post_description">Description:</label>
           <textarea className={styles.body} name="post_description" value={description} onChange={(event) => setDescription(event.target.value)}/>
-          <label htmlfor="spottted_location">Location:</label>
+          <label htmlFor="spottted_location">Location:</label>
           <input className={styles.body} name="spottted_location" value={location} onChange={(event) => setLocation(event.target.value)}/>
-          <label htmlfor="spotted_date">Date You Spotted: </label>
+          <label htmlFor="spotted_date">Date You Spotted: </label>
           <input type="date" name="spotted_date" value={date} onChange={(event) => setDate(event.target.value)} />
-          <button type="submit" className={styles.saveButton}>Save</button>
+          <button type="submit" className='saveButton'>Save</button>
         </form>
 
       </div>

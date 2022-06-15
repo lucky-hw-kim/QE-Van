@@ -19,6 +19,7 @@ const ForumList = () => {
   const [allForums, setAllforums] = useState([])
   const {forumModal, setForumModal} = useContext(EventContext);
 
+  const token = localStorage.getItem('token')
 
   const handleDeletePost = (id) => {
     // setForumModal(false);

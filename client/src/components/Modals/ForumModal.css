@@ -45,14 +45,6 @@
 }
 
 
-.closeButtonOne {
-  font-size: 1.3rem;
-  right: 40px;
-  top: 40px;
-  color: var(--black);
-  position: absolute;
-}
-
 .helloThere {
   margin-top: -7%;
 }

@@ -72,7 +72,7 @@ const SavedEvent = ({ savedEventModal, setSavedEventModal }) => {
             <div className={styles.title}>SAVED EVENTS</div>
             <div className={styles.eventList}>
               {savedEvents.map((e) => {
-                return <EventSaved e={e} key={e.id} />;
+                return <EventSaved e={e} key={e._id} />;
               })}
             </div>
           </div>
@@ -80,7 +80,7 @@ const SavedEvent = ({ savedEventModal, setSavedEventModal }) => {
             <div className={styles.title}>ATTENDING EVENTS</div>
             <div className={styles.eventList}>
               {attendEvents.map((e) => {
-                return <EventSaved e={e} key={e.id} />;
+                return <EventSaved e={e} key={e._id} />;
               })}
             </div>
           </div>

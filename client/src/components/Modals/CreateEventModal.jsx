@@ -73,7 +73,6 @@ const CreateEventModal = ({ setCreateEventModal }) => {
         },
       })
       .then((result) => {
-        console.log(result.data);
         setCreateEventModal(false);
       })
       .catch((err) => {

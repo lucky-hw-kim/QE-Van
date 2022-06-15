@@ -8,16 +8,16 @@
 }
 
 .profilePic {
-  width: 170px;
+  width: 160px;
   height: fit-content;
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 
 .profileInfo {
-  width: 70%;
+  width: 75%;
   text-align: left;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 
 }
 

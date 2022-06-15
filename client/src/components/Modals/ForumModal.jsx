@@ -16,7 +16,11 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
   const[title, setTitle] = useState(post.post_title);
   const[description, setDescription] = useState(post.post_description);
   const[date, setDate] = useState(post.spotted_date);
+  const[authUser, setAuthUser] = useState(false);
   const[location, setLocation] = useState(post.spotted_location);
+
+  const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('userId')
 
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -50,8 +54,8 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
     setForumModal(false);
     axios
       .delete(`/forum/${post._id}`, {
-        headers: { authorization: "Bearer " + authCtx.token },
-        data: { userId: authCtx.userId },
+        headers: { authorization: "Bearer " + token },
+        data: { userId: userId },
       })
       .then((res) => {
         res && setSuccessMsg("Forum deleted successfully");
@@ -76,12 +80,11 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
     try {
       const response = await axios.put(`/forum/${post._id}`, body, {
         headers: { 
-          authorization: "Bearer " + authCtx.token
+          authorization: "Bearer " + token
         }
       })
       setEditForum(false)
       setForumModal(false)
-      console.log(response.data)
     }
     catch (err) {console.error(err)}
   }
@@ -121,6 +124,7 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
 
               <div>
                 <span>
+                {post.userId === user._id ?  
                   <button
                     onClick={handleDeleteForum}
                     type="button"
@@ -128,6 +132,8 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                   >
                     Delete
                   </button>
+                  : ""}
+                 {post.userId === user._id ? 
                   <button
                     onClick={() => {
                       setEditForum(true);
@@ -137,6 +143,7 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                   >
                     Edit
                   </button>
+                  : ""}
                 </span>
               </div>
               </>

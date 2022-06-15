@@ -51,7 +51,7 @@ input[type="file"]::-webkit-file-upload-button {
     padding: 2rem;
     max-height: 97%;
     width: 97%;
-    color: white;
+    color: var(--black);
   }
 
   .containerHeader {
@@ -78,6 +78,7 @@ input[type="file"]::-webkit-file-upload-button {
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
+    outline: none;
   }
 
   .containerForm > label {
