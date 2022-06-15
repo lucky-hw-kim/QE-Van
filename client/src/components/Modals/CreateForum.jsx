@@ -51,12 +51,14 @@ const CreateForum = ({setCreatePost, createPost}) => {
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="container">
+        <div className="containerHead">
         <button
           className="closeButton"
           onClick={() => setCreatePost(false)}
         >
           X
         </button>
+        </div>
         <div className="subContainer">
         <div className="containerHeader">
           I spotted you!

@@ -8,8 +8,8 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
   const [image, setImage] = useState(null);
   const [user, setUser] = useState("");
   const [editProfile, setEditProfile] = useState(false);
-  const [msg, setMsg] = useState("")
-  const [state, setState] = useState({}) 
+  const [msg, setMsg] = useState("");
+  const [state, setState] = useState({});
   const authCtx = useContext(AuthContext);
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -32,15 +32,15 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
 
   const pronouns = user.pronoun;
   const profilePic = user.profile_pic;
-  console.log("User:", user.firstname)
+  console.log("User:", user.firstname);
 
   const initialState = {
     firstname: user.firstname,
     lastname: "",
     pronoun: pronouns ? pronouns : "",
-    currentAdminStatus: "", 
+    currentAdminStatus: "",
     password: user.password,
-    profile_pic: profilePic
+    profile_pic: profilePic,
   };
 
   const [updateUser, setUpdateUser] = useState(initialState);
@@ -58,7 +58,6 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
     }
   };
 
-
   const handleUserSubmit = async (e) => {
     e.preventDefault();
 
@@ -72,31 +71,35 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
       try {
         const result = await axios.post("/upload", data, {
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
           },
         });
-        console.log("upload success")
+        console.log("upload success");
       } catch (err) {
         console.log(err);
       }
     }
 
-    const response = await axios.put(`/user/${userId}`, updateUser )
+    const response = await axios.put(`/user/${userId}`, updateUser);
     try {
-      setMsg("Profile updated successfully")
+      setMsg("Profile updated successfully");
     } catch (error) {
       setMsg(error);
     }
-    setProfileModal(false)
-    
+    setProfileModal(false);
   };
 
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="container">
-        <button className="closeButton" onClick={() => setProfileModal(false)}>
-          X
-        </button>
+        <div className="containerHead">
+          <button
+            className="closeButton"
+            onClick={() => setProfileModal(false)}
+          >
+            X
+          </button>
+        </div>
         <div className="subContainer">
           {!editProfile ? (
             <>
@@ -105,8 +108,7 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
                   className={styles.profilePic}
                   src={
                     profilePic
-                      ? process.env.REACT_APP_PUBLIC_FOLDER +
-                        user.profile_pic
+                      ? process.env.REACT_APP_PUBLIC_FOLDER + user.profile_pic
                       : `https://avatars.dicebear.com/api/human/${user.firstname}.svg`
                   }
                   alt="profile_pic"
@@ -114,13 +116,13 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
 
                 <div className={styles.profileInfo}>
                   <div className={styles.userName}>
-                    {user.firstname} {user.lastname}{" "}
+                    NAME: {user.firstname} {user.lastname}{" "}
                   </div>
                   <div className={styles.userPronoun}>
-                    {!pronouns || !pronouns.length ? (
+                     {!pronouns || !pronouns.length ? (
                       <span>Add your pronouns </span>
                     ) : (
-                      <span>{pronouns.join(" | ")} </span>
+                      <span>PRONOUN: {pronouns.join(" | ")} </span>
                     )}
                   </div>
                   <div className={styles.userEmail}>
@@ -140,7 +142,11 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
           ) : (
             <div className={styles.editContainer}>
               <div className="containerHeader">Personalize your profile</div>
-              <form className="containerForm" encType="multipart/form-data" onSubmit={handleUserSubmit}>
+              <form
+                className="containerForm"
+                encType="multipart/form-data"
+                onSubmit={handleUserSubmit}
+              >
                 <h4>{msg ? msg : ""}</h4>
                 <label htmlfor="firstname">First Name: </label>
                 <input
@@ -171,7 +177,7 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
                   onChange={handleImageUpload}
                   accept="image/*"
                 />
-               <button className="saveButton">Save</button>
+                <button className="saveButton">Save</button>
                 <br />
               </form>
             </div>

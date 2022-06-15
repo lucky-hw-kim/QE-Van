@@ -1,4 +1,5 @@
 .sub_eventsContainer {
+  margin: 2rem;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -28,7 +29,7 @@
   font-size: 0.9rem;
   color: var(--black);
   text-shadow: 3px 3px var(--white);
-  background-color: var(--peach);
+  background-color: var(--eggshell);
   margin-top: -15px;
   text-align: center;
   width: fit-content;

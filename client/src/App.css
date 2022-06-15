@@ -8,6 +8,7 @@
   --white: #EBE7DE;
   --grey:rgb(87, 84, 85);
   --yellow: #F4B232;
+  --eggshell: #f6cccc;
  
 }
 
@@ -32,26 +33,150 @@ input[type="file"]::-webkit-file-upload-button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--peach);
-    padding: 3%;
+    background-color: var(--eggshell);
     box-shadow: 9px 9px var(--black);
     display: flex;
     align-items: center;
+    flex-direction: column;
     --fs: 0.65rem;
-    width: 40vw;
-    max-height: 74vh;
+    width: 41vw;
+    max-height: 79vh;
     font-size: 0.86rem;
     justify-content: center;
+    border-bottom: 3px solid var(--black);
+    border-left: 3px solid var(--black);
+    border-right: 3px solid var(--black);
   }
   .subContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
+    color: var(--black);
+    overflow-x: auto;
+    width: 85%;
+  }
+
+  .containerHead {
     border: 3px solid var(--black);
+    width: 100%;
+    height: 6.5vh;
+    background-color: var(--red);
+  }
+
+  .containerHeader {
+    font-size: 1.4vw;
+    color: var(--black);
+    text-shadow: 3px 3px var(--white);
+    background-color: var(--eggshell);
+    border: 3px solid var(--black);
+    padding: 0.5rem 0.5rem;
+    margin-top: -1rem;;
+    text-indent: none;
+    position: absolute;
+    text-align: center;
+    width: 33.3vw;
+    margin-bottom: 2vh;
+  }
+
+  .containerForm {
+    margin-top: 4vh;
+  }
+
+  .containerForm > input {
+    border: 3px solid var(--black);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 0.8rem;
+    width: 33vw;
+    height: 30px;
+    margin-bottom: 0.3rem;
+    padding: 0px 10px;
+    outline: none;
+  }
+
+  .containerForm > label {
+    line-height: 2rem
+  }
+
+  .containerForm > textarea {
+    border: 3px solid var(--black);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+    padding: 0px 10px;
+    height: 60px;
+    line-height: 1rem;
+    resize:vertical;
+    overflow: auto;
+    outline: none;
+    width: 33vw;
+
+  }
+
+  .closeButton {
+    font-size: 1.5vw;
+    align-self: flex-end;
+    right: 10px;
+    top: 10px;
+    padding: 3.5px 1px 2px 4px;
+    position: absolute;
+    color: var(--black);
+    border: 3px solid var(--black);
+  }
+
+  .saveButton {
+    border: 3px solid var(--black);
+    width: 34.8vw;
+    margin-top: 1rem;
+    height: 5vh;
+    color: var(--black);
+    
+  }
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--eggshell);
+    box-shadow: 9px 9px var(--black);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    --fs: 0.65rem;
+    width: 40vw;
+    max-height: 74vh;
+    font-size: 0.86rem;
+    justify-content: center;
+    border-bottom: 3px solid var(--black);
+    border-left: 3px solid var(--black);
+    border-right: 3px solid var(--black);
+  }
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
     color: var(--black);
     overflow: auto;
     width: 85%;
+  }
+
+  .containerHead {
+    border: 3px solid var(--black);
+    width: 100%;
+    height: 6vh;
+    background-color: var(--red);
   }
 
   .containerHeader {
@@ -103,8 +228,10 @@ input[type="file"]::-webkit-file-upload-button {
     align-self: flex-end;
     right: 10px;
     top: 10px;
+    padding: 2px 1px 2px 3px;
     position: absolute;
-    color: var(---black);
+    color: var(--black);
+    border: 3px solid var(--black);
   }
 
   .saveButton {
@@ -113,20 +240,9 @@ input[type="file"]::-webkit-file-upload-button {
     margin-top: 1rem;
     height: 5vh;
     color: var(--black);
+    
   }
-  
-}
-
-/* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .container {
-    --fs: 40px;
-  }
-  
+    
 }
 
 /* 

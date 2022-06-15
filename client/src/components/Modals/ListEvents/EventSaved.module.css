@@ -9,6 +9,18 @@
   align-self: center;
   margin-left: 0.7rem;
 }
+.title{
+font-size: 0.8vw;
+color: var(--blue);
+}
+
+
+
+.locationLink {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
 
 a:link {
   text-decoration: none;

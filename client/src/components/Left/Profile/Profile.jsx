@@ -4,7 +4,7 @@ import profile from "../../../assets/profile.png";
 import AuthContext from "../../../Context/AuthProvider";
 import axios from "../../api/axios"
 
-const Profile = () => {
+const Profile = ({profileModal}) => {
   const [user, setUser] = useState("")
   const authCtx = useContext(AuthContext);
   const userId = window.localStorage.getItem("userId")
@@ -16,7 +16,7 @@ const Profile = () => {
     ).catch ((error) => {
       console.log(error)
     })
-  }, [authCtx.token])
+  }, [authCtx.token, profileModal])
 
 
   const pronouns = user.pronoun;

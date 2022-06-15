@@ -1,7 +1,5 @@
-
-
-.location-search-input::placeholder{
-color: var(--black);
+.eventUpdateForm {
+  margin-top: 4vh;
 }
 
 .createpostTitle:focus{
@@ -9,8 +7,6 @@ color: var(--black);
 }
 
 
-.createEventForm > .image_input {
-  padding: 0.1rem;
-}
+
 
 

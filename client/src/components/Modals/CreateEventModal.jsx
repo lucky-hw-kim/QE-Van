@@ -83,16 +83,18 @@ const CreateEventModal = ({ setCreateEventModal }) => {
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="container">
+      <div className="containerHead">
         <button
           className="closeButton"
           onClick={() => setCreateEventModal(false)}
         >
           X
         </button>
+        </div>
         <div className="subContainer">
           <h2 className="containerHeader">Create An Event</h2>
           <form
-            className="containerForm"
+            className="containerForm eventContainerForm"
             onSubmit={handleEventSubmit}
             encType="multipart/form-data"
           >
@@ -126,6 +128,7 @@ const CreateEventModal = ({ setCreateEventModal }) => {
             {/* <img src={URL.createObjectURL(image)} /> */}
             <label for="event_link">Event Link:</label>
             <input
+              placeholder="Dont include http://"
               type="text"
               name="event_link"
               value={link}

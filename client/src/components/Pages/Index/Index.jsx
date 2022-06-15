@@ -4,6 +4,7 @@ import logo from "../../../assets/Banner_6pt.png";
 import rainbow from "../../../assets/rainbow.png";
 import cloud from "../../../assets/cloud@4x.png";
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
 
 
 const Index = () => {

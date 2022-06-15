@@ -1,21 +1,110 @@
-.NavBarContainer {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8vh;
-  font-size: 1.5vw;
+
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .NavBarContainer {
+    margin-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9vh;
+    font-size: 1.5vw;
+  }
+  
+  .NavBarContainer > button {
+  
+    color: var(--red);
+    text-align: center;
+  
+  }
+  
+  div > .Logout {
+    margin-top: 0.2rem;
+    color: var(--black);
+  }
+  
 }
 
-.NavBarContainer > button {
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
 
-  color: var(--red);
-  text-align: center;
-
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .NavBarContainer {
+    margin-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8vh;
+    font-size: 1.5vw;
+  }
+  
+  .NavBarContainer > button {
+  
+    color: var(--red);
+    text-align: center;
+  
+  }
+  
+  div > .Logout {
+    margin-top: 0.2rem;
+    color: var(--black);
+  }
+  
 }
 
-div > .Logout {
-  margin-top: 0.2rem;
-  color: var(--black);
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    --fs: 32px;
+  }
 }
 
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .container {
+    --fs: 28px;
+  }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  .container {
+    --fs: 22px;
+  }
+  
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  .container {
+    --fs: 16px;
+  }
+  
+}

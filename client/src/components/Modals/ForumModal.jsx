@@ -103,12 +103,14 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="container">
+      <div className="containerHead">
           <button
             className="closeButton"
             onClick={() => setForumModal(false)}
           >
             X
           </button>
+        </div>
         <div className="subContainer">
           {!editForum ? (
               <div className="forumContainer">
@@ -178,7 +180,7 @@ const ForumModal = ({ post, handleDeletePost, handleEditPost, editPost }) => {
                   value={date}
                   onChange={(event) => setDate(event.target.value)}
                 />
-                <button type="submit" id={styles.saveButton} className={styles.saveButton}>
+                <button type="submit" id={styles.saveButton} className="saveButton">
                 Save
                 </button>
               </form>

@@ -1,30 +1,26 @@
 .profileSection {
   display: flex;
-  justify-content: space-evenly;
-  text-align: center;
   line-height: 2.4rem;
   padding: 1rem;
   color: var(--black);
+  justify-content: flex-start;
+  
 }
 
 .profilePic {
+  margin-left: -3rem;
   width: 160px;
   height: fit-content;
+  margin-right: 2rem;
+  border: 3px solid var(--black);
   margin-right: 2rem;
 }
 
 .profileInfo {
-  width: 75%;
+  width: 100%;
   text-align: left;
-  padding: 1rem;
-  font-size: 0.9rem;
-
-}
-
-
-.profileInfo_bottom {
-  margin-top: 2rem;
-  border: 3px solid var(--black);
+  font-size: 1.1vw;
+  line-height: 5vh;
 }
 
 .editButton {
@@ -32,6 +28,16 @@
   border: 3px solid var(--black);
   padding: 1rem;
   color: var(--black);
+  width: 100%;
+}
+
+.userPronoun {
+  font-size:  1vw;
+}
+
+.userEmail {
+  line-height: 4vh;
+  font-size:  0.75vw;
 }
 
 .editContainer > form {

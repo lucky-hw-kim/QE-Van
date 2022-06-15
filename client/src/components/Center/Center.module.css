@@ -12,6 +12,7 @@
         color: var(--white);
         display: flex;
         flex-direction: column;
+        padding: 1rem 0;
     }
     
     .pinkbox {
@@ -54,6 +55,7 @@
         color: var(--white);
         display: flex;
         flex-direction: column;
+        padding: 1rem 0;
     }
     
     .pinkbox {

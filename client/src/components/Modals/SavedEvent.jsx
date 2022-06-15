@@ -62,13 +62,15 @@ const SavedEvent = ({ savedEventModal, setSavedEventModal }) => {
   return ReactDom.createPortal(
     <div style={OVERLAY_STYLES}>
       <div className="container">
-        <div className={styles.sub_eventsContainer}>
+        <div className="containerHead">
           <button
             className="closeButton"
             onClick={() => setSavedEventModal(false)}
           >
             X
           </button>
+          </div>
+        <div className={styles.sub_eventsContainer}>
           <div className={styles.savedEventContainer}>
             <div className={styles.title}>SAVED EVENTS</div>
             <div className={styles.eventList}>
