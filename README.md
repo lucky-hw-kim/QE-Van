@@ -1,4 +1,4 @@
-<h1 align="center" id="title">QE-Van</h1>
+<h1 align="center" id="title">🌈 QE-Van 🌈</h1>
 
 <p id="description">QE-Van is a queer event app that helps users find and create events in Greater Vancouver. With QE-Van users can search for events by location date and type of event. They can also create their own events and write forums to connect with other users. QE-Van is the perfect way to meet new people and connect with the queer community in Vancouver!</p>
 
