@@ -8,27 +8,27 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/register.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/register.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Register User</h4>
 <br/>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/profile.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/profile.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Personalize profile</h4>
 <br/>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/create-event.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/create-event.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Create an event</h4>
 <br/>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/create-forum.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/create-forum.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Create a forum</h4>
 <br/>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/Sorting.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/Sorting.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Sorting by dates & Add save / attend events</h4>
 <br/>
 
-<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/signin.gif?raw=true" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/lucky-hw-kim/QE-Van/blob/main/doc/signin.gif?raw=true" alt="project-screenshot" width="600" height="338/">
 <h4>Sign in User</h4>
 <br/>
 
