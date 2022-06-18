@@ -4,12 +4,14 @@ import ReactDom from "react-dom";
 import AuthContext from "../../Context/AuthProvider";
 import axios from "../api/axios";
 
+
 const ProfileModal = ({ setProfileModal, profileModal }) => {
   const [image, setImage] = useState(null);
   const [user, setUser] = useState("");
   const [editProfile, setEditProfile] = useState(false);
   const [msg, setMsg] = useState("");
   const [state, setState] = useState({});
+  const [openCrop, setOpenCrop] = useState(false)
   const authCtx = useContext(AuthContext);
   const OVERLAY_STYLES = {
     position: "fixed",
@@ -56,6 +58,7 @@ const ProfileModal = ({ setProfileModal, profileModal }) => {
       console.log(img);
       setImage(img);
     }
+    setOpenCrop(true);
   };
 
   const handleUserSubmit = async (e) => {
